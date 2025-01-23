@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content type</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    name: 'React',
+                    count: 100,
+                    messages: ["Read the book", "Watch the tutorial"],
+
+                    bState: true,
+                    uState: undefined,
+                    nState: null,
+
+                    friend: { name: "Tom", age: 18 },
+                };
+            }
+
+            render() {
+                const { name, count, messages } = this.state;
+                const { bState, uState, nState } = this.state;
+
+                const { friend } = this.state;
+
+                return (
+                    <div>
+                        {/* 1. 数字Number、字符串String、数组Array 直接显示 */}
+                        <div>
+                            <h2>{name}</h2>
+                            <h2>{count}</h2>
+                            <h2>{messages}</h2>
+                        </div>
+
+                        {/* 2. 布尔值Boolean、underfined或null 不显示 */}
+                        <div>
+                            <h2>{bState}</h2>
+                            <h2>{uState}</h2>
+                            <h2>{nState}</h2>
+                        </div>
+
+                        {/* 3. 对象不能作为子元素进行显示 Uncaught Error: Objects are not valid as a React child */}
+                        <div>
+                            <h2>{friend}</h2>
+                        </div>
+                    </div>
+                )
+            }
+        }
+
+        const app = ReactDOM.createRoot(document.querySelector('#app'));
+        app.render(<App />)
+    </script>
+</body>
+
+</html>
