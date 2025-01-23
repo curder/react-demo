@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX binding events about arguments</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super();
+
+                this.state = {
+                }
+            }
+
+            btn1Click(e) {
+                console.log(e, this);
+            }
+
+            btn2Click(e, title) {
+                console.log(e, this)
+                console.log("title: ", title)
+            }
+
+            render() {
+                const { message } = this.state;
+                return (
+                    <div>
+                        {/* 1. event 参数传递 */}
+                        <button onClick={(e) => this.btn1Click(e)}>Button 1</button>
+
+                        {/* 2. 额外的参数传递 */}
+                        <button onClick={(e) => this.btn2Click(e, 'Hello')}>Button 2</button>
+                    </div>
+                )
+            }
+
+        }
+
+        ReactDOM
+            .createRoot(document.querySelector('#app'))
+            .render(<App />)
+    </script>
+</body>
+
+</html>
