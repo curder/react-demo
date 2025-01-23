@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX binding event</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+        /*
+         *  this 绑定的四种规则
+         *
+         *  1. 默认绑定，独立执行函数，this 指向全局对象
+         *  2. 隐式绑定，函数作为对象的方法调用，this 指向对象
+         *  3. 显示绑定，通过call、apply、bind 绑定 this 指向
+         *  4. new 绑定，构造函数中的 this 指向新创建的对象
+        */
+        class App extends React.Component {
+            constructor() {
+                super();
+
+                this.state = {
+                    count: 100,
+                }
+
+                this.btn2Click = this.btn2Click.bind(this)
+            }
+
+            btn1Click() {
+                this.setState({
+                    count: this.state.count + 1,
+                })
+            }
+
+            btn2Click() {
+                this.setState({
+                    count: this.state.count + 1,
+                })
+            }
+
+            btn3Click = () => {
+                this.setState({
+                    count: this.state.count + 1,
+                })
+            }
+
+            btn4Click() {
+                this.setState({
+                    count: this.state.count + 1,
+                })
+            }
+
+            render() {
+                const { count } = this.state;
+                return (
+                    <div>
+                        <h1>Binding event</h1>
+
+                        <h2>{count}</h2>
+
+                        {/* 方式一. 通过 bind 绑定 */}
+                        <button onClick={this.btn1Click.bind(this)}>Button 1</button>
+                        <button onClick={this.btn2Click}>Butotn 2</button>
+
+                        {/* 方式二. 通过箭头函数绑定(ES6 class fields) */}
+                        <button onClick={this.btn3Click}>Button 3</button>
+
+                        {/* 方式三. 通过箭头函数绑定【推荐】 */}
+                        <button onClick={() => this.btn4Click()}>Button 4</button>
+
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM
+            .createRoot(document.querySelector('#app'))
+            .render(<App />)
+    </script>
+</body>
+
+</html>
