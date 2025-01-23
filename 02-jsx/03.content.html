@@ -27,14 +27,25 @@
                     nState: null,
 
                     friend: { name: "Tom", age: 18 },
+
+                    firstName: "Tom",
+                    lastName: "Jerry",
+
+                    age: 20,
+
+                    movies: ["The Shawshank Redemption", "The Godfather", "The Dark Knight", "The Lord of the Rings", "Pulp Fiction", "Fight Club"],
                 };
             }
 
             render() {
+                // 插入标识符
                 const { name, count, messages } = this.state;
                 const { bState, uState, nState } = this.state;
-
                 const { friend } = this.state;
+
+                // 对内容进行计算后显示
+                const { firstName, lastName } = this.state;
+                const { age } = this.state;
 
                 return (
                     <div>
@@ -54,10 +65,35 @@
 
                         {/* 3. 对象不能作为子元素进行显示 Uncaught Error: Objects are not valid as a React child */}
                         <div>
-                            <h2>{friend}</h2>
+                            {/* <h2>{friend}</h2> */}
+                        </div>
+
+                        {/* 4. 插入对应的表达式 */}
+                        <div>
+                            <h2>{10 + 20}</h2>
+                            <h2>{`${firstName} ${lastName}`}</h2>
+                        </div>
+
+                        {/* 5. 插入三元运算符 */}
+                        <div>
+                            <h2>{age > 18 ? 'Adults' : 'Minors'}</h2>
+                        </div>
+
+                        {/* 6. 调用方法获取结果 */}
+                        <div>
+                            <ul>
+                                {this.getLiElements()}
+                            </ul>
                         </div>
                     </div>
                 )
+
+            }
+
+            getLiElements() {
+                return this.state.movies.map((movie, index) => {
+                    return <li key={index}>{movie}</li>
+                })
             }
         }
 
