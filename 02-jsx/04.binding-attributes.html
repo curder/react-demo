@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSX binding attributes</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+
+        class App extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = {
+                    title: 'Hello World',
+                    imgSrc: 'https://placehold.co/600x400/EEE/31343C',
+                    aLink: 'https://www.baidu.com',
+
+                    classIsActive: true,
+                    h2Style: {
+                        color: 'red',
+                        fontSize: '24px'
+                    }
+                };
+
+            }
+
+            render() {
+                const { title, imgSrc, aLink, classIsActive, h2Style } = this.state;
+
+                // 2. 绑定 class 属性，当 classIsActive 为 true 时，添加 active 类，否则不添加
+                // 方式一：使用模板字符串
+                const classNames = `text-gray-200 text-2xl ${classIsActive ? 'active' : ''}`.trim();
+                // 方式二：使用数组
+                const classLists = ['text-gray-200', 'text-2xl'];
+                if (classIsActive) {
+                    classLists.push('active');
+                }
+                // 方式三：使用第三方库：classnames
+
+                return (
+                    <div>
+                        <div>
+                            {/* 1. 基本属性绑定 */}
+                            <h1 title={title}>H2 Tag</h1>
+                            <a href={aLink} target="_blank">百度一下</a>
+                            <img src={imgSrc} alt="" />
+                        </div>
+
+                        <div>
+                            {/* 2. 绑定 class 属性 */}
+                            <h2 className={classNames} >绑定 class 属性</h2>
+                            <h2 className={classLists.join(" ")} >绑定 class 属性</h2>
+                        </div>
+
+                        <div>
+                            {/* 3. 绑定 style 属性 */}
+                            <h2 style={{ color: 'red', fontSize: '24px' }}>绑定 style 属性</h2>
+                            <h2 style={h2Style}>绑定 style 样式</h2>
+                        </div>
+                    </div>
+                );
+            }
+        }
+
+
+        const app = ReactDOM.createRoot(document.querySelector('#app'));
+        app.render(<App />);
+    </script>
+</body>
+
+</html>
