@@ -46,15 +46,23 @@
             // 增加或减少购物车数据的数量
             changeCount(index, count) {
                 // 根据索引修改购物车中对应书籍的 count 的值
-                const newBooks = [...this.state.books];
+                const books = [...this.state.books];
 
-                newBooks[index].count += count
+                books[index].count += count
 
-                this.setState({ books: newBooks, })
-
+                this.setState({ books, })
             }
 
-            render() {
+            // 删除购物车书籍
+            remove(index) {
+                const books = [...this.state.books]
+
+                books.splice(index, 1)
+
+                this.setState({ books, })
+            }
+
+            renderBooks() {
                 const { books } = this.state;
 
                 // 计算总价格
@@ -94,7 +102,7 @@
                                                     <button onClick={() => this.changeCount(index, 1)} style={{ marginLeft: "10px" }}>+</button>
                                                 </td>
                                                 <td>
-                                                    <button>Remove</button>
+                                                    <button onClick={() => this.remove(index)}>Remove</button>
                                                 </td>
                                             </tr>
                                         )
@@ -106,6 +114,16 @@
                         <h2>总价格：{formatPrice(totalPrice)}</h2>
                     </div>
                 )
+            }
+
+            renderEmpty() {
+                return <div><h2>当前购物车为空，请添加书籍</h2></div>
+            }
+
+            render() {
+                const { books } = this.state;
+
+                return books.length ? this.renderBooks() : this.renderEmpty();
             }
         }
 
