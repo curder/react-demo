@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping cart</title>
+    <style>
+        table {
+            /* width: 100%; */
+            border-collapse: collapse;
+        }
+
+        thead th,
+        tbody td {
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+        }
+
+        thead tr {
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            padding: 5px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script src="./10.books.js"></script>
+    <script src="./10.format.js"></script>
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super();
+
+                this.state = {
+                    books
+                }
+            }
+
+            render() {
+                const { books } = this.state;
+
+                // 计算总价格
+                const totalPrice = books.reduce((total, book) => {
+                    return total + book.price * book.count;
+                }, 0);
+
+                return (
+                    <div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>序号</th>
+                                    <th>书籍名称</th>
+                                    <th>出版日期</th>
+                                    <th>价格</th>
+                                    <th>购买数量</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                {
+                                    books.map((book, index) => {
+                                        return (
+                                            <tr key={book.id}>
+                                                <td>{index + 1}</td>
+                                                <td>{book.name}</td>
+                                                <td>{book.date}</td>
+                                                <td>{formatPrice(book.price)}</td>
+                                                <td>
+                                                    <button disabled style={{ marginRight: "10px" }}>-</button>
+                                                    {book.count}
+                                                    <button style={{ marginLeft: "10px" }}>+</button>
+                                                </td>
+                                                <td>
+                                                    <button>Remove</button>
+                                                </td>
+                                            </tr>
+                                        )
+                                    })
+                                }
+                            </tbody>
+                        </table>
+
+                        <h2>总价格：{formatPrice(totalPrice)}</h2>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM
+            .createRoot(document.querySelector("#app"))
+            .render(<App />)
+    </script>
+</body>
+
+</html>
