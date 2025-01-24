@@ -43,6 +43,17 @@
                 }
             }
 
+            // 增加或减少购物车数据的数量
+            changeCount(index, count) {
+                // 根据索引修改购物车中对应书籍的 count 的值
+                const newBooks = [...this.state.books];
+
+                newBooks[index].count += count
+
+                this.setState({ books: newBooks, })
+
+            }
+
             render() {
                 const { books } = this.state;
 
@@ -75,9 +86,12 @@
                                                 <td>{book.date}</td>
                                                 <td>{formatPrice(book.price)}</td>
                                                 <td>
-                                                    <button disabled style={{ marginRight: "10px" }}>-</button>
+                                                    <button
+                                                        disabled={book.count === 1}
+                                                        onClick={() => this.changeCount(index, -1)}
+                                                        style={{ marginRight: "10px" }}>-</button>
                                                     {book.count}
-                                                    <button style={{ marginLeft: "10px" }}>+</button>
+                                                    <button onClick={() => this.changeCount(index, 1)} style={{ marginLeft: "10px" }}>+</button>
                                                 </td>
                                                 <td>
                                                     <button>Remove</button>
