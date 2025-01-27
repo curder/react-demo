@@ -1,6 +1,5 @@
 import { Component } from "react"
-
-
+import HelloWorld from "./HelloWorld"
 
 class App extends Component {
     constructor() {
@@ -14,7 +13,11 @@ class App extends Component {
     render() {
         const { message } = this.state;
         return (
-            <h1>{message}</h1>
+            <div>
+                <HelloWorld />
+                <h1>{message}</h1>
+            </div>
+
         )
     }
 }
