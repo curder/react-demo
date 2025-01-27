@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movies</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+        const app = ReactDOM.createRoot(document.querySelector('#app'));
+
+        class MovieList extends React.Component {
+            constructor() {
+                super();
+
+                this.state = {
+                    movies: [
+                        { id: 1, title: 'The Shawshank Redemption' },
+                        { id: 2, title: 'The Godfather' },
+                        { id: 3, title: 'The Dark Knight' },
+                        { id: 4, title: 'The Lord of the Rings: The Return of the King' },
+                        { id: 5, title: 'Pulp Fiction' },
+                    ],
+                };
+            }
+
+            render() {
+                return (
+                    <div>
+                        <h1>Movies</h1>
+                        <ul>
+                            {this.state.movies.map(movie => <li key={movie.id}>{movie.title}</li>)}
+                        </ul>
+                    </div >
+                );
+            }
+        }
+        app.render(<MovieList />);
+    </script>
+</body>
+
+</html>

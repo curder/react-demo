@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script src="./js/react.development.js"></script>
+    <script src="./js/react-dom.development.js"></script>
+    <script src="./js/babel.min.js"></script>
+    <script type="text/babel">
+        const app = ReactDOM.createRoot(document.querySelector('#app'));
+
+        class Counter extends React.Component {
+            constructor() {
+                super();
+
+                this.state = {
+                    count: 0,
+                };
+
+                // 绑定类方法的 this
+                this.increment = this.increment.bind(this);
+                this.decrement = this.decrement.bind(this);
+            }
+
+            increment() {
+                this.setState({
+                    count: this.state.count + 1,
+                })
+            }
+
+            decrement() {
+
+                if (this.state.count === 0) {
+                    return;
+                }
+
+                this.setState({
+                    count: this.state.count - 1,
+                })
+            }
+
+            render() {
+                return (
+                    <div>
+                        <h1>{this.state.count}</h1>
+                        <button onClick={this.increment}>Increment</button>
+                        <button onClick={this.decrement}>Decrement</button>
+                    </div>
+                );
+            }
+        }
+
+        app.render(<Counter />);
+    </script>
+</body>
+
+</html>

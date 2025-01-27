@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello React</title>
+    <meta name="description" content="引入react相关依赖并渲染一个简单的Hello World，当点击按钮时，改变渲染的文本内容">
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script type="text/babel">
+        const app = ReactDOM.createRoot(document.querySelector('#app'));
+        let message = 'Hello World!'; // 将文本定义成变量
+
+        const btnClick = () => { // 定义一个函数
+            message = 'Hello React!'; // 点击按钮时，修改文本内容
+
+            // 当变量修改后需要重新渲染
+            renderRoot();
+        }
+
+        // 将渲染逻辑封装成一个函数
+        const renderRoot = () => {
+            app.render((
+                <div>
+                    <h1>{message}</h1>
+                    <button onClick={btnClick}>Change</button>
+                </div>
+            ));
+        }
+        renderRoot(); // 首次渲染
+    </script>
+</body>
+
+</html>
