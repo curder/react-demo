@@ -6,18 +6,23 @@ class App extends Component {
         super()
 
         this.state = {
-            message: "Hello React"
+            isShowHelloWorld: true,
         }
     }
 
+    isShowHelloWorld() {
+        this.setState({
+            isShowHelloWorld: !this.state.isShowHelloWorld
+        })
+    }
+
     render() {
-        const { message } = this.state;
+        const { isShowHelloWorld } = this.state;
         return (
             <div>
-                <HelloWorld />
-                <h1>{message}</h1>
+                {isShowHelloWorld && <HelloWorld />}
+                <button onClick={e => this.isShowHelloWorld()}>Toggle Component</button>
             </div>
-
         )
     }
 }
