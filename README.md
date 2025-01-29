@@ -26,3 +26,5 @@
 
 - [01. 类组件和函数组件](03-create-react-app/src/01-class-components-and-function-components)
 - [02. 组件生命周期函数](03-create-react-app/src/02-component-lifecycle-functions)
+
+- [03. 组件的嵌套](03-create-react-app/src/03-component-nesting)
