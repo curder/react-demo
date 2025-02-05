@@ -28,8 +28,8 @@ class HelloWorld extends Component {
         const { message } = this.state
         return (
             <div>
-            <h3>{message}</h3>
-            <button onClick={e => this.changeText()}>Change Text</button>
+                <h3>{message}</h3>
+                <button onClick={e => this.changeText()}>Change Text</button>
             </div>
         )
     }
@@ -48,7 +48,7 @@ class HelloWorld extends Component {
     componentWillUnmount() {
         console.log("HelloWorld Component: componentWillUnmount method");
     }
- 
+
     shouldComponentUpdate() {
         return true;
     }
