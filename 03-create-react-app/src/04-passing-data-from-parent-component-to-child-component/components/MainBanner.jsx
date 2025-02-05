@@ -5,11 +5,11 @@ export class MainBanner extends Component {
   //   super();
   // }
   render() {
-    const { banners } = this.props;
+    const { title, banners } = this.props;
 
     return (
       <div className='main-banner'>
-        <h2>轮播图</h2>
+        <h2>{title}</h2>
         <ul>
           {banners.map((banner, index) => <li key={index}>{banner}</li>)}
         </ul>
