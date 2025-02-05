@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 
 export class MainBanner extends Component {
-  // constructor(props) {
-  //   super();
-  // }
   render() {
     const { title, banners } = this.props;
 
