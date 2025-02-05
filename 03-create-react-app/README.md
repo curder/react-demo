@@ -53,3 +53,5 @@ React内部为了告知当前处于哪些阶段，会对组件内部实现的某
 可以在这些回调函数中编写自己的逻辑代码，来完成自己的需求功能。
 
 ## 组件嵌套
+˝
+使用vscode安装并使用 [ES7+ React/Redux/React-Native snippets](https://marketplace.visualstudio.com/items?itemName=dsznajder.es7-react-js-snippets) 插件，更多使用说明[查看 Snippets](https://github.com/r5n-labs/vscode-react-javascript-snippets/blob/HEAD/docs/Snippets.md)。
