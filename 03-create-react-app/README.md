@@ -81,3 +81,51 @@ MainBanner.defaultProps = {
 ## 子组件向父组件传递数据
 
 父组件通过传递自定义属性传递一个函数，在子组件中调用这个函数并传递对应的值来达到传递数据的目的。
+
+## 实现组件的插槽
+
+在开发中，经常会将公用代码提取成组件，但是为了组件根据通用型，不能将组件中的内容限制为固定的 `div`、`span` 等元素。
+
+React 对于此类需要插槽的情况非常灵活，它有两种方案可以实现：
+
+1. 组件的 `children` 子元素
+   - 每个组件都可以获取到 `props.children`，它包含组件的开始标签和借宿标签之间的内容
+   ```jsx
+   export class NavBarChildren extends Component {
+       render() {
+           const { children } = this.props
+
+           return (
+               <div className='nav-bar'>
+                   <div className="left">{children[0]}</div>
+                   <div className="center">{children[1]}</div>
+                   <div className="right">{children[2]}</div>
+               </div>
+           )
+       }
+   }
+
+   export default NavBarChildren
+   ```
+  - 通过 `children` 实现的方案虽然可行，但是有弊端：
+    - `children` 可能是一个数组也可能是一个元素
+    - 通过索引值获取传入的元素容易出错，不能精准的获取传入的元素
+2. `props` 属性传递 React 元素
+
+  ```
+  export class NarBarProps extends Component {
+      render() {
+          const { left, center, right } = this.props
+
+          return (
+              <div className='nav-bar'>
+                  <div className="left">{left}</div>
+                  <div className="center">{center}</div>
+                  <div className="right">{right}</div>
+              </div>
+          )
+      }
+  }
+
+  export default NarBarProps
+  ```
