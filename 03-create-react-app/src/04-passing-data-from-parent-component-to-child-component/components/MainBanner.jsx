@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 export class MainBanner extends Component {
+  // static defaultProps = {
+  //   title: "默认标题",
+  //   banners: [],
+  // }
   render() {
     const { title, banners } = this.props;
 
@@ -13,6 +18,16 @@ export class MainBanner extends Component {
       </div>
     )
   }
+}
+
+MainBanner.propTypes = {
+  title: PropTypes.string.isRequired,
+  banners: PropTypes.array,
+}
+
+MainBanner.defaultProps = {
+  title: "默认标题",
+  banners: [],
 }
 
 export default MainBanner

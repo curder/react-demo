@@ -29,6 +29,7 @@ export class Main extends Component {
     return (
       <div className='main'>
         <MainBanner title="轮播图" banners={banners} />
+        <MainBanner />
         <MainProducts products={products} />
       </div>
     )

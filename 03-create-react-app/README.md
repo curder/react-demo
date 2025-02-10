@@ -59,3 +59,21 @@ React内部为了告知当前处于哪些阶段，会对组件内部实现的某
 ## 父组件向子组件传递数据
 
 父组件通过 `属性 = 值` 的形式来传递给子组件数据，子组件通过 `props` 参数获取副组件传递的数据。
+
+当需要进行数据限定和默认值的设置时，可以使用 `prop-types` 包的 `PropTypes`进行限定：
+
+```js
+import PropTypes from 'prop-types'
+
+// 设置数据格式
+MainBanner.propTypes = {
+  title: PropTypes.string.isRequired,
+  banners: PropTypes.array,
+}
+
+// 默认值
+MainBanner.defaultProps = {
+  title: "默认标题",
+  banners: [],
+}
+```
