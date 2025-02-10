@@ -8,7 +8,7 @@ export class MainProducts extends Component {
       <div className='main-products'>
         <h2>商品列表</h2>
         <ul>
-          {products.map((product, index) => <li key={index}>{product}</li>)}
+          {products.map((product, index) => <li key={product.acm}>{product.title}</li>)}
         </ul>
       </div>
     )

@@ -8,7 +8,7 @@ export class MainBanner extends Component {
       <div className='main-banner'>
         <h2>{title}</h2>
         <ul>
-          {banners.map((banner, index) => <li key={index}>{banner}</li>)}
+          {banners.map((banner, index) => <li key={banner.acm}>{banner.title}</li>)}
         </ul>
       </div>
     )
