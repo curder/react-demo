@@ -129,3 +129,42 @@ React 对于此类需要插槽的情况非常灵活，它有两种方案可以�
 
   export default NarBarProps
   ```
+
+## 非父子组件之间的通讯
+
+非父子组件之间的通讯适合使用 `Context`。
+
+- `Context` 提供了一种在组件之间共享值的方式，而不必显式的通过组件树的形式逐层传递 `props`；
+- `Context` 设计的目的是为了共享那些对于一个组件树而言是"全局"的数据，比如传递认证的用户、用户主题或语言。
+
+### `React.createContext()`
+
+`React.createContext()` 用于创建一个需要共享的 `Context` 对象，如果一个组件订阅了 `Context`，那么这个组件会从离自身最近的那个匹配的 Provider 中读取到当前的context值；
+
+```typescript
+import React from 'react'
+
+const themeContext = React.createContext(defaultValue);
+```
+
+`defaultValue` 是组件在顶层查找过程中没有找到对应的Provider，那么就使用默认值
+
+### `Context.Provider` 
+
+- 每个 Context 对象都会返回一个 Provider React组件，它允许消费组件订阅 context 的变化
+- Provider 接收个 value 属性，传递给消费组件；
+- 一个 Provider 可以和多个消费组件有对应关系；
+- 多个 Provider 也可以嵌套使用，里层的会覆盖外层的数据；
+- 当 Provider 的 value 值发生变化时，它内部的所有消费组件都会重新渲染；
+
+### `Class.contextType`
+
+- 挂载在 class 上的 contextType 属性会被重赋值为一个由 `React.createContext()` 创建的 Context 对象：
+- 允许使用 `this.context` 来消费最近 Context 上的那个值；
+- 可以在任何生命周期中访问到它，包括 `render` 函数中；
+
+### `Context.Consumer`
+
+- React 组件也可以订阅到 context 变更。能在函数式组件中完成订阅 context。
+- 这里需要函数作为子元素（function as child）这种做法；
+- 这个函数接收当前的 context 值，返回一个 React 节点；
