@@ -130,7 +130,7 @@ React 对于此类需要插槽的情况非常灵活，它有两种方案可以�
   export default NarBarProps
   ```
 
-## 非父子组件之间的通讯
+## 非父子组件之间的通讯 `Context`
 
 非父子组件之间的通讯适合使用 `Context`。
 
@@ -168,3 +168,12 @@ const themeContext = React.createContext(defaultValue);
 - React 组件也可以订阅到 context 变更。能在函数式组件中完成订阅 context。
 - 这里需要函数作为子元素（function as child）这种做法；
 - 这个函数接收当前的 context 值，返回一个 React 节点；
+
+
+## 非父子组件通讯 `Event Bus`
+
+使用命令安装 `hy-event-store` 库：
+
+```bash
+yarn add -D hy-event-store
+```
