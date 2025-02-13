@@ -370,3 +370,4 @@ function higherOrderComponent(WrappedComponent) {
 
 1. 高阶组件本身不是一个组件，它是一个函数
 2. 函数接收一个组件作为参数，返回一个新的组件
+3. 高阶组件并不是 React API 的一部分，它是基于 React 组合特性而形成的设计模式
