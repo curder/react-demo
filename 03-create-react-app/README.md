@@ -349,3 +349,24 @@ yarn add -D hy-event-store
 
     export default App
     ```
+
+## 高阶组件
+
+接收一个组件作为参数，返回一个新的组件。
+
+```jsx
+import { PureComponent } from 'react'
+
+function higherOrderComponent(WrappedComponent) {
+  return class extends PureComponent {
+    render() {
+      return (
+        <WrappedComponent />
+      )
+    }
+  }
+}
+```
+
+1. 高阶组件本身不是一个组件，它是一个函数
+2. 函数接收一个组件作为参数，返回一个新的组件

@@ -38,3 +38,4 @@
 - [12. ref 获取DOM](03-create-react-app/src/12-ref-gets-dom)
 - [13. ref 获取Component](03-create-react-app/src/13-ref-get-component)
 - [14. 表单受控组件](03-create-react-app/src/14-forms)
+- [15. 高阶组件](03-create-react-app/src/15-higher-order-component)
