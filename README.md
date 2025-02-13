@@ -40,4 +40,5 @@
 - [14. 表单受控组件](03-create-react-app/src/14-forms)
 - [15. 高阶组件](03-create-react-app/src/15-higher-order-component)
 - [16. 高阶组件注入props](03-create-react-app/src/16-higher-order-enhanced-props)
-- [17. 高级组件共享Context](03-create-react-app/src/17-higher-order-with-context)
+- [17. 高阶组件共享Context](03-create-react-app/src/17-higher-order-with-context)
+- [18. 高阶组件鉴权](03-create-react-app/src/18-higher-order-auth)
