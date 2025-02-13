@@ -42,3 +42,4 @@
 - [16. 高阶组件注入props](03-create-react-app/src/16-higher-order-enhanced-props)
 - [17. 高阶组件共享Context](03-create-react-app/src/17-higher-order-with-context)
 - [18. 高阶组件鉴权](03-create-react-app/src/18-higher-order-auth)
+- [19. 高阶组件记录日志](03-create-react-app/src/19-higher-order-record-log)
