@@ -177,3 +177,22 @@ const themeContext = React.createContext(defaultValue);
 ```bash
 yarn add -D hy-event-store
 ```
+
+## `setState`
+
+### React 中为什么使用 `setState`
+
+开发中并不能直接通过修改 `state` 的值来让界面发生更新：
+
+- 因为修改了 `state` 之后 `React` 并不知道数据发生了变化，而我们是希望 `React` 根据最新的 `State` 来重新渲染界面
+- React 并没有实现类似于 Vue2 中的 `Object.defineProperty` 或者 Vue3 中的 Proxy 的方式来监听数据的变化
+- **必须通过 `setState` 来告知 React 数据已经发生了变化；**
+
+
+### `setState` 异步更新
+
+- `setState` 设计为异步, 可以显著的提升性能；如果每次调用 `setState` 都进行一次更新, 那么意味着 `render` 函数会被频繁调用, 界面重新渲染, 这样效率是很低的；最好的办法应该是获取到多个更新, 之后进行批量更新； 
+
+- 如果同步更新了 `state`, 但是还没有执行 `render` 函数, 那么 `state` 和 `props` 不能保持同步；`state` 和 `props` 不能保持一致性, 会在开发中产生很多的问题；
+
+
