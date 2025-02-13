@@ -196,3 +196,82 @@ yarn add -D hy-event-store
 - 如果同步更新了 `state`, 但是还没有执行 `render` 函数, 那么 `state` 和 `props` 不能保持同步；`state` 和 `props` 不能保持一致性, 会在开发中产生很多的问题；
 
 
+## ref 获取 DOM
+
+1. 在元素上绑定 `ref` 属性，可以通过 `this.refs` 获取到元素的 DOM 对象（不推荐）
+    ```jsx
+    import React, { PureComponent } from 'react'
+
+    export class App extends PureComponent {
+        getNativeDom() {
+            console.log(this.refs['hello-react'])
+        }
+
+        render() {
+            return (
+            <div>
+                <h1 ref="hello-react">Hello React</h1>
+            </div>
+            )
+        }
+    }
+
+    export default App
+    ```
+2. 在类组件中，可以通过 React.createRef() 创建一个 ref 对象（推荐）
+
+    ```jsx
+    import React, { PureComponent } from 'react'
+
+    export class App extends PureComponent {
+        constructor() {
+            super()
+
+            this.titleRef = React.createRef()
+        }
+
+        getNativeDom() {
+            // 2. 在类组件中，可以通过 React.createRef() 创建一个 ref 对象
+            console.log(this.titleRef.current)
+        }
+
+        render() {
+            return (
+            <div>
+                <h2 ref={this.titleRef}>Hello Title Ref</h2>
+                <button onClick={e => this.getNativeDom()} >Get Dom</button>
+            </div>
+            )
+        }
+    }
+
+    export default App
+    ```
+3. 通过回调函数的方式获取到元素的 DOM 对象（不推荐）
+
+    ```jsx
+    import React, { PureComponent } from 'react'
+
+    export class App extends PureComponent {
+        constructor() {
+            super()
+
+            this.titleElement = null
+        }
+
+        getNativeDom() {
+            console.log(this.titleElement)
+        }
+
+        render() {
+            return (
+            <div>
+                <h3 ref={el => this.titleElement = el}>Hello title Element</h3>
+                <button onClick={e => this.getNativeDom()} >Get Dom</button>
+            </div>
+            )
+        }
+    }
+
+    export default App
+    ```
