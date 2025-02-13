@@ -36,3 +36,4 @@
 - [10. setState 异步更新](03-create-react-app/src/10-setState-usage)
 - [11. render 函数优化](03-create-react-app/src/11-render-method-optimization)
 - [12. ref 获取DOM](03-create-react-app/src/12-ref-gets-dom)
+- [13. ref 获取Component](03-create-react-app/src/13-ref-get-component)
