@@ -394,3 +394,82 @@ import { Fragment } from 'react'
 ```
 
 它看起来像是空标签 `<></>`，**如果在一些循环渲染数据时，需要向 Fragment 中添加对应的 `key` 时，就不允许使用短语法。**
+
+## [react-transition-group](https://reactcommunity.org/react-transition-group/css-transition) 动画
+
+使用命令 `yarn add react-transition-group` 安装动画库。
+
+该库主要包含四个组件 `Transition`、`CSSTransition`、`SwitchTransition` 和 `TransitionGroup`。
+
+- `CSSTransition` 组件：一般前端开发中常用的是，它通过控制CSS类来管理动画。
+
+- `SwitchTransition` 组件：用于两个组件的显示和隐藏之间切换使用。
+
+- `TransitionGroup` 组件：将多个动画组件包裹在其中，一般用于列表元素动画。
+
+
+### `CSSTransition`
+
+`CSSTransition` 组件基于 `Transition` 组件构建，`CSSTransition` 组件在执行过程中有三个状态：`appear`、`enter` 和 `done`。
+
+
+```jsx
+import React, { PureComponent, createRef } from 'react'
+import { CSSTransition } from 'react-transition-group'
+import './style.css'
+
+export class App extends PureComponent {
+    constructor() {
+        super()
+
+        this.state = {
+            isShow: false,
+        }
+    }
+
+    render() {
+        const { isShow } = this.state
+        return (
+            <div>
+                <button onClick={() => this.setState({ isShow: !isShow })}>Toggle</button>
+
+                <CSSTransition unmountOnExit={true} in={isShow} timeout={2000} classNames="app">
+                    <h2>Hello React!</h2>
+                </CSSTransition>
+            </div>
+        )
+    }
+}
+
+export default App
+```
+
+> `unmountOnExit` 需要设置为 `true`，当状态为 `false` 时才能正确卸载内容。
+
+它们有三种状态, 需要定义对应的CSS样式： 
+
+- **开始状态**：对应的类 `*-appear`、`*-enter`、`*-exit`
+- **执行动画**：对应的类 `*-appear-active`、`*-enter-active`、`*-exit-active`
+- **执行结束**：对应的类 `*-appear-done`、`*-enter-done`、`*-exit-done`
+
+```css
+.app-enter {
+    opacity: 0;
+}
+
+.app-enter-active {
+    opacity: 1;
+    transition: opacity 2s ease;
+}
+
+.app-exit {
+    opacity: 1;
+}
+
+.app-exit-active {
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+```
+
+> `app` 前缀对应 `CSSTransition` 组件在使用时定义的 `classNames` 属性。
