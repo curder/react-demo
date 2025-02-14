@@ -24,7 +24,7 @@
 
 ## Create react app
 
-- [01. 类组件和函数组件](03-create-react-app/src/01-class-components-and-function-components)
+- [01. 类组件和函数组件](03-create-react-app/src/01-class-components-and-function-components/)
 - [02. 组件生命周期函数](03-create-react-app/src/02-component-lifecycle-functions)
 - [03. 组件的嵌套](03-create-react-app/src/03-component-nesting)
 - [04. 父组件向子组件传递数据](03-create-react-app/src/04-passing-data-from-parent-component-to-child-component)
@@ -45,4 +45,5 @@
 - [19. 高阶组件记录日志](03-create-react-app/src/19-higher-order-record-log)
 - [20. Portals 指定渲染位置](03-create-react-app/src/20-portals)
 - [21. Fragment](03-create-react-app/src/21-fragment)
-- [22. react-transition-group 动画](03-create-react-app/src/22-react-transition-group-CSSTransition)
+- [22. react-transition-group CSSTransition](03-create-react-app/src/22-react-transition-group-CSSTransition)
+- [23. react-transition-group SwitchTransition](03-create-react-app/src/23-react-transition-group-SwitchTransition)

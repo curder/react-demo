@@ -495,3 +495,11 @@ export default App
 
 
 
+
+### `SwitchTransition`
+
+`SwitchTransition` 旨在完成两个组件之间切换的炫酷动画。
+
+比如当一个按钮需要在 `on` 和 `off` 之间切换, 希望看到 `on` 先从左侧退出, `off` 再从右侧进入；
+
+
