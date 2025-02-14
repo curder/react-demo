@@ -473,3 +473,22 @@ export default App
 ```
 
 > `app` 前缀对应 `CSSTransition` 组件在使用时定义的 `classNames` 属性。
+
+
+#### `CSSTransition` 属性
+
+- `unmountOnExit` 如果添加了 `unmountOnExit={true}`, 那么该组件会在执行退出动画结束后被移除掉；
+
+- `in`：触发进入或退出状态
+  
+    - 当 `in` 为 `true` 时, 触发进入状态, 会添加 `*-enter`、`*-enter-acitve` 的 CSS 类开始执行动画, 当动画执行结束后, 会移除两个class, 并且添加 `*-enter-done` 的 CSS 类。
+
+    - 当 `in` 为 `false` 时, 触发退出状态, 会添加 `*-exit`、`*-exit-active` 的 CSS 类开始执行动画, 当动画执行结束后, 会移除两个class, 并且添加 `*-enter-done` 的 CSS 类。
+
+- `classNames`：动画的 CSS 类名称，决定了对 CSS 类名称，比如 `card-enter`、`card-enter-active`、`card-enter-done`。
+
+- `timeout`：动画的过渡时间。
+
+- `appear`：初次进入时是否添加动画
+
+更多属性可以[参考官网文档](https://reactcommunity.org/react-transition-group/transition)。
