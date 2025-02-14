@@ -9,6 +9,8 @@ export class App extends PureComponent {
         this.state = {
             isShow: false,
         }
+
+        this.customRef = createRef(null)
     }
 
     render() {
@@ -17,8 +19,8 @@ export class App extends PureComponent {
             <div>
                 <button onClick={() => this.setState({ isShow: !isShow })}>Toggle</button>
 
-                <CSSTransition unmountOnExit={true} in={isShow} timeout={2000} classNames="app">
-                    <h2>Hello React!</h2>
+                <CSSTransition nodeRef={this.customRef} unmountOnExit={true} in={isShow} timeout={2000} classNames="app">
+                    <h2 ref={this.customRef}>Hello React!</h2>
                 </CSSTransition>
             </div>
         )
