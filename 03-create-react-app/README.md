@@ -371,3 +371,26 @@ function higherOrderComponent(WrappedComponent) {
 1. 高阶组件本身不是一个组件，它是一个函数
 2. 函数接收一个组件作为参数，返回一个新的组件
 3. 高阶组件并不是 React API 的一部分，它是基于 React 组合特性而形成的设计模式
+
+## Fragment
+
+Fragment 允许将子列表分组，而无需向 DOM 添加额外节点。
+
+在 React 中还提供了 Fragment 短语法：
+
+```jsx
+import { Fragment } from 'react'
+
+<Fragment>
+    <h2>Title</h2>
+    <p className="container">Content</p>
+</Fragment>
+
+// 可以写成
+<>
+    <h2>Title</h2>
+    <p className="container">Content</p>
+</>
+```
+
+它看起来像是空标签 `<></>`，**如果在一些循环渲染数据时，需要向 Fragment 中添加对应的 `key` 时，就不允许使用短语法。**
