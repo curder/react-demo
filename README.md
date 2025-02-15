@@ -51,4 +51,5 @@
 
 ## CSS
 
-- [01. 内联CSS样式](./04-css/src/01-inline-style)
+- [01. 内联 CSS 样式](./04-css/src/01-inline-style)
+- [02. 普通 CSS 样式](./04-css/src/02-normal)
