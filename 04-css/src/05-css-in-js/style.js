@@ -1,25 +1,39 @@
 import styled from "styled-components";
+import * as variables from "./style/variables";
 
 export const AppWrapper = styled.div`
-    .section {
-        border: 1px solid red;
+.footer {
+    border: 1px solid green;
+}
+`
 
-        .title {
-            font-size: 20px;
-            font-weight: bold;
-            color: blue;
+export const SectionWrapper = styled.div.attrs(props => ({
+    $titleSize: props.$titleSize || 20
+}))`
+    border: 1px solid red;
 
-            &:hover {
-                color: red;
-                background-color: beige;
-            }
-        }
+    .title {
+        font-size: ${props => props.$titleSize}px;
+        font-weight: bold;
+        color: ${variables.primaryColor};
 
-        .content {
-            font-size: 16px;
+        &:hover {
+            color: ${variables.secondaryColor};
+            background-color: beige;
         }
     }
-    .footer {
-        border: 1px solid green;
+
+    .content {
+        font-size: ${props => props.theme.titleSize}px;
     }
+`
+
+export const Button = styled.button`
+  background-color: ${props => props.$backgroundColor};
+  color: ${props => props.color};
+  font-size: ${props => props.size || 16}px;
+  padding: 10px;
+`
+export const PrimaryButton = styled(Button)`
+  border-radius: 5px;
 `
