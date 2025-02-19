@@ -1,18 +1,18 @@
 import React, { PureComponent } from 'react'
-import store from "../store"
 import { changeCountAction } from '../store/actionCreators'
 import { connect } from 'react-redux'
 
 export class Profile extends PureComponent {
 
     render() {
-        const { count } = this.props
+        const { count, changeCount } = this.props
+
         return (
             <div>
                 <h2>{count}</h2>
 
-                <button onClick={() => store.dispatch(changeCountAction(-1))}>-1</button>
-                <button onClick={() => store.dispatch(changeCountAction(-5))}>-5</button>
+                <button onClick={() => changeCount(-1)}>-1</button>
+                <button onClick={() => changeCount(-5)}>-5</button>
             </div>
         )
     }
@@ -20,4 +20,10 @@ export class Profile extends PureComponent {
 
 const mapStateToProps = (state) => ({ count: state.count })
 
-export default connect(mapStateToProps)(Profile)
+const mapDispatchToProps = (dispatch) => ({
+    changeCount(number) {
+        dispatch(changeCountAction(number))
+    }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Profile)
