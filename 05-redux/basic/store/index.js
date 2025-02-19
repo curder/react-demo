@@ -11,13 +11,15 @@ const initialState = {
 // 参数二：action（通过 dispatch 传入的 action）
 // 返回值：新的 state
 const reducer = (state = initialState, action) => {
-    if (action.type === 'changeName') {
-        return { ...state, name: action.name }
-    } else if (action.type === 'addNumber') {
-        return { ...state, count: state.count + action.number }
+    // 根据不同的 action.type，返回不同的 state
+    switch (action.type) {
+        case 'changeName'
+            return { ...state, name: action.name }
+        case 'addNumber'
+            return { ...state, count: state.count + action.number }
+        default:
+            return state
     }
-
-    return state
 }
 
 // 创建 store
