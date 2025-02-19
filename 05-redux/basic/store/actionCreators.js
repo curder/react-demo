@@ -1,9 +1,10 @@
+const { CHANGE_NAME, ADD_NUMBER } = require('./constants')
 const changeNameAction = (name) => ({
-    type: 'changeName',
+    type: CHANGE_NAME,
     name,
 })
 const addNumberAction = (number) => ({
-    type: 'addNumber',
+    type: ADD_NUMBER,
     number,
 })
 

@@ -1,4 +1,5 @@
 const { createStore } = require('redux')
+const { CHANGE_NAME, ADD_NUMBER } = require('./constants')
 
 // 初始化数据
 const initialState = {
@@ -13,9 +14,9 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     // 根据不同的 action.type，返回不同的 state
     switch (action.type) {
-        case 'changeName':
+        case CHANGE_NAME:
             return { ...state, name: action.name }
-        case 'addNumber':
+        case ADD_NUMBER:
             return { ...state, count: state.count + action.number }
         default:
             return state
