@@ -17,7 +17,7 @@ const reducer = (state = initialState, action) => {
         return { ...state, count: state.count + action.number }
     }
 
-    return initialState
+    return state
 }
 
 // 创建 store
