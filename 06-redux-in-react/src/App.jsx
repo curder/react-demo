@@ -2,26 +2,25 @@ import React, { PureComponent } from 'react'
 import './style.css'
 import Home from './components/Home'
 import Profile from './components/Profile'
-import store from './store'
+import axios from 'axios'
+import { connect } from 'react-redux'
+import { changeBannersAction, changeRecommendsAction } from './store/actionCreators'
 
 export class App extends PureComponent {
-  constructor() {
-    super()
 
-    this.state = {
-      count: store.getState().count,
-    }
-  }
   componentDidMount() {
-    store.subscribe(() => {
-      const state = store.getState()
-      this.setState({
-        count: state.count,
-      })
+    const url = `http://123.207.32.32:8000/home/multidata`
+    axios.get(url).then(({ data }) => {
+      return { banner: data.data.banner.list, recommend: data.data.recommend.list }
+    }).then(({ banner, recommend }) => {
+      const { changeBanners, changeRecommend } = this.props
+      changeBanners(banner)
+      changeRecommend(recommend)
     })
   }
+
   render() {
-    const { count } = this.state
+    const { count } = this.props
 
     return (
       <div>
@@ -35,4 +34,17 @@ export class App extends PureComponent {
   }
 }
 
-export default App
+const mapStateToProps = (state) => ({
+  count: state.count
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  changeBanners(banners) {
+    dispatch(changeBannersAction(banners))
+  },
+  changeRecommend(recommends) {
+    dispatch(changeRecommendsAction(recommends))
+  },
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

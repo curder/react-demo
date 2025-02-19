@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 export class Profile extends PureComponent {
 
     render() {
-        const { count, changeCount } = this.props
+        const { count, recommends, changeCount } = this.props
 
         return (
             <div>
@@ -13,12 +13,20 @@ export class Profile extends PureComponent {
 
                 <button onClick={() => changeCount(-1)}>-1</button>
                 <button onClick={() => changeCount(-5)}>-5</button>
+
+                <ul>
+                    {
+                        recommends.map(item => {
+                            return <li key={item.acm}>{item.title}</li>
+                        })
+                    }
+                </ul>
             </div>
         )
     }
 }
 
-const mapStateToProps = (state) => ({ count: state.count })
+const mapStateToProps = (state) => ({ count: state.count, recommends: state.recommends })
 
 const mapDispatchToProps = (dispatch) => ({
     changeCount(number) {

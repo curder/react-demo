@@ -4,19 +4,28 @@ import { connect } from 'react-redux'
 
 export class Home extends PureComponent {
     render() {
-        const { count, changeCount } = this.props
+        const { count, banners, changeCount } = this.props
+
         return (
             <div>
                 <h2>{count}</h2>
 
                 <button onClick={() => changeCount(1)}>+1</button>
                 <button onClick={() => changeCount(10)}>+10</button>
+
+                <div className="banners">
+                    <ul>
+                        {banners.map(banner => (
+                            <li key={banner.acm}>{banner.title}</li>
+                        ))}
+                    </ul>
+                </div>
             </div>
         )
     }
 }
 
-let mapStateToProps = (state) => ({ count: state.count })
+let mapStateToProps = (state) => ({ count: state.count, banners: state.banners, })
 
 let mapDispatchToProps = (dispatch) => ({
     changeCount(number) {
