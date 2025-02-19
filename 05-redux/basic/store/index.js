@@ -13,9 +13,9 @@ const initialState = {
 const reducer = (state = initialState, action) => {
     // 根据不同的 action.type，返回不同的 state
     switch (action.type) {
-        case 'changeName'
+        case 'changeName':
             return { ...state, name: action.name }
-        case 'addNumber'
+        case 'addNumber':
             return { ...state, count: state.count + action.number }
         default:
             return state
