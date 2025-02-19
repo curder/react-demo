@@ -1,0 +1,9 @@
+.components {
+    display: flex;
+}
+
+.components>div {
+    flex: 1;
+    border: 1px solid rosybrown;
+    padding: 10px;
+}
