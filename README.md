@@ -64,3 +64,5 @@
 - [02. 修改 store 数据](./05-redux-in-node/02.change-store-data.js)
 - [03. 订阅/取消订阅 sotre 数据](./05-redux-in-node/03.subscribe-store-data.js)
 - [04. 动态生成事件名称](./05-redux-in-node/04.dynamic-generate-action.js)
+
+## Redux in React
