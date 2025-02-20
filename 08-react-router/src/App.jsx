@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Link, Route, Routes } from 'react-router-dom'
+import { Link, NavLink, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
 
@@ -8,8 +8,8 @@ export class App extends PureComponent {
     return (
       <div>
         <nav className="header">
-          <Link to="/home">Home</Link>
-          <Link to="/about">About</Link>
+          <NavLink style={({ isActive }) => ({ color: isActive ? 'red' : '' })} to="/home">Home</NavLink>
+          <Link to="/about" >About</Link>
         </nav>
         <div className="content">
           <Routes>
