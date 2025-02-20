@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counter from './features/counter'
+import counterReducer from './features/counter'
+import homeReducer from './features/home'
 
 const store = configureStore({
     reducer: {
-        counter
+        counter: counterReducer,
+        home: homeReducer,
     },
     devTools: true
 });

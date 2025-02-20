@@ -15,5 +15,4 @@ export const counterSlice = createSlice({
 })
 
 export const { changeCount } = counterSlice.actions;
-
 export default counterSlice.reducer;

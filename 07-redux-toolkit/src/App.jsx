@@ -3,8 +3,14 @@ import Home from './components/Home'
 import Profile from './components/Profile'
 import './style.css'
 import { connect } from 'react-redux'
+import { fetchHomeMultiDataAction } from './store/features/home'
 
 export class App extends PureComponent {
+
+  componentDidMount() {
+    this.props.fetchHomeMultiData()
+  }
+
   render() {
     const { count } = this.props
 
@@ -25,4 +31,11 @@ const mapStateToProps = (state) => {
     count: state.counter.count,
   }
 }
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = (dispatch) => ({
+  fetchHomeMultiData() {
+    dispatch(fetchHomeMultiDataAction())
+  }
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

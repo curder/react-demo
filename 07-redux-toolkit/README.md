@@ -1,7 +1,7 @@
 # Redux toolkit
 
 ```bash
-yarn add @reduxjs/toolkit react-redux -D
+yarn add @reduxjs/toolkit react-redux axios -D
 ```
  
 Redux Toolkit 的核心API主要是如下几个：
