@@ -1,13 +1,13 @@
 import React, { PureComponent } from 'react'
 
-export class About extends PureComponent {
+export class HomeRanking extends PureComponent {
     render() {
         return (
             <>
-                <h2>About</h2>
+                <h1>Home Ranking</h1>
             </>
         )
     }
 }
 
-export default About
+export default HomeRanking

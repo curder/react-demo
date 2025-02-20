@@ -15,14 +15,14 @@ export class Login extends PureComponent {
         const { isLoggedIn } = this.state
 
         return (
-            <div>
+            <>
                 <h2>Login</h2>
 
                 {
                     !isLoggedIn ? <button onClick={() => this.setState({ isLoggedIn: true })}> Login now</button> : <Navigate to="/home" />
                 }
 
-            </div>
+            </>
         )
     }
 }

@@ -4,6 +4,8 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Login from './pages/Login'
 import NotFound from './pages/NotFound'
+import HomeRecommand from './pages/HomeRecommand'
+import HomeRanking from './pages/HomeRanking'
 
 export class App extends PureComponent {
   render() {
@@ -16,7 +18,11 @@ export class App extends PureComponent {
         <div className="content">
           <Routes>
             <Route path='' element={<Navigate to="/login" />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/home" element={<Home />}>
+              <Route path='' element={<Navigate to="/home/ranking" />} />
+              <Route path='/home/ranking' element={<HomeRanking />} />
+              <Route path='/home/recommend' element={<HomeRecommand />} />
+            </Route>
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
