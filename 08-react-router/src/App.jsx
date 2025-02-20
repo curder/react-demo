@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react'
-import { Link, NavLink, Route, Routes } from 'react-router-dom'
+import { Link, Navigate, NavLink, Route, Routes } from 'react-router-dom'
 import Home from './pages/Home'
 import About from './pages/About'
+import Login from './pages/Login'
+import NotFound from './pages/NotFound'
 
 export class App extends PureComponent {
   render() {
@@ -13,10 +15,12 @@ export class App extends PureComponent {
         </nav>
         <div className="content">
           <Routes>
+            <Route path='' element={<Navigate to="/login" />} />
             <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
-          Content
         </div>
         <div className="footer">
           Footer
