@@ -20,8 +20,8 @@ export class App extends PureComponent {
             <Route path='' element={<Navigate to="/login" />} />
             <Route path="/home" element={<Home />}>
               <Route path='' element={<Navigate to="/home/ranking" />} />
-              <Route path='/home/ranking' element={<HomeRanking />} />
-              <Route path='/home/recommend' element={<HomeRecommand />} />
+              <Route path='ranking' element={<HomeRanking />} />
+              <Route path='recommend' element={<HomeRecommand />} />
             </Route>
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
