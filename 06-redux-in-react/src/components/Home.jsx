@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { changeCountAction } from '../store/actionCreators'
+import { changeCountAction } from '../store/features/counter'
 import { connect } from 'react-redux'
 
 export class Home extends PureComponent {
@@ -25,7 +25,10 @@ export class Home extends PureComponent {
     }
 }
 
-let mapStateToProps = (state) => ({ count: state.count, banners: state.banners, })
+let mapStateToProps = (state) => ({
+    count: state.counter.count,
+    banners: state.home.banners,
+})
 
 let mapDispatchToProps = (dispatch) => ({
     changeCount(number) {

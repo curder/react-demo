@@ -1,18 +1,13 @@
 import axios from "axios"
-import { CHANGE_COUNT, CHANGE_BANNERS, CHANGE_RECOMMENDS } from "./constans"
-
-export const changeCountAction = (number) => ({
-    type: CHANGE_COUNT,
-    number,
-})
+import * as actionTypes from "./constans"
 
 export const changeBannersAction = (banners) => ({
-    type: CHANGE_BANNERS,
+    type: actionTypes.CHANGE_BANNERS,
     banners,
 })
 
 export const changeRecommendsAction = (recommends) => ({
-    type: CHANGE_RECOMMENDS,
+    type: actionTypes.CHANGE_RECOMMENDS,
     recommends,
 })
 

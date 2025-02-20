@@ -3,7 +3,7 @@ import './style.css'
 import Home from './components/Home'
 import Profile from './components/Profile'
 import { connect } from 'react-redux'
-import { fetchHomeMultiDataAction } from './store/actionCreators'
+import { fetchHomeMultiDataAction } from './store/features/home'
 
 export class App extends PureComponent {
 
@@ -27,7 +27,7 @@ export class App extends PureComponent {
 }
 
 const mapStateToProps = (state) => ({
-  count: state.count
+  count: state.counter.count,
 });
 
 const mapDispatchToProps = (dispatch) => ({

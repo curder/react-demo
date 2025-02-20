@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { changeCountAction } from '../store/actionCreators'
+import { changeCountAction } from '../store/features/counter'
 import { connect } from 'react-redux'
 
 export class Profile extends PureComponent {
@@ -26,7 +26,10 @@ export class Profile extends PureComponent {
     }
 }
 
-const mapStateToProps = (state) => ({ count: state.count, recommends: state.recommends })
+const mapStateToProps = (state) => ({
+    count: state.counter.count,
+    recommends: state.home.recommends
+})
 
 const mapDispatchToProps = (dispatch) => ({
     changeCount(number) {
