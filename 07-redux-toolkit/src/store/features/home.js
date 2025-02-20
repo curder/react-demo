@@ -22,7 +22,8 @@ export const homeSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(fetchHomeMultiDataAction.fulfilled, (state, { payload }) => {
-            return { ...state, banners: payload.banner, recommends: payload.recommend, };
+            state.banners = payload.banner;
+            state.recommends = payload.recommend;
         });
     }
 });

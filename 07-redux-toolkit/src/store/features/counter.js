@@ -9,7 +9,7 @@ export const counterSlice = createSlice({
 
     reducers: {
         changeCount(state, actions) {
-            return { ...state, count: state.count + actions.payload };
+            state.count = state.count + actions.payload;
         },
     }
 })
