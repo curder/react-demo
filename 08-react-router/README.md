@@ -68,31 +68,26 @@ export default App;
 
 使用 `Routes` 和 `Route` 组件来定义路由嵌套：
 
-```js
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/home";
-import About from "./pages/about";
-import NotFound from "./pages/not-found";
-import User from "./pages/user";
-import UserProfile from "./pages/user-profile";
-import UserPosts from "./pages/user-posts";
+```jsx
+<BrowserRouter>
+    <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/about" element={<About />} />
+    <Route path="/user" element={<User />}>
+        <Route path="profile" element={<UserProfile />} />
+        <Route path="posts" element={<UserPosts />} />
+    </Route>
+    <Route path="*" element={<NotFound />} />
+    </Routes>
+</BrowserRouter>
+```
 
-const App = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/user" element={<User />}>
-          <Route path="profile" element={<UserProfile />} />
-          <Route path="posts" element={<UserPosts />} />
-        </Route>
-        <Route path="*" element={<NotFound />} />
-      </Routes>
-    </BrowserRouter>
-  );
-};
+子路由通过父路由中的`<Outlet />` 组件进行渲染。
 
-export default App;
+```jsx
+<>
+    <h1>Dashboard</h1>
+    {/* will either be <HoUserProfileme/> or <UserPosts/> */}
+    <Outlet />
+</>
 ```
