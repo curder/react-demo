@@ -50,10 +50,12 @@ React Hooks 提供了以下几种常用的 Hooks：
 
 ### 3.3 `useContext`
 
-`useContext` 是 React Hooks 中用于访问 context 的 Hook。
+`useContext` 是 React Hooks 中用于访问 `context` 的 Hook。
 
-- 接收一个 context 对象（由 React.createContext 创建）作为参数。
-- 返回 context 对象的当前值。
+- 接收一个 `context` 对象（由 React.createContext 创建）作为参数。
+- 返回 `context` 对象的当前值。
+
+> 当前的 `context` 值发生变化时，组件会重新渲染。
 
 ### 3.4 `useReducer`
 
