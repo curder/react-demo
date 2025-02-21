@@ -15,7 +15,6 @@ export class Home extends PureComponent {
                 </ul>
 
                 <Outlet />
-
             </>
         )
     }

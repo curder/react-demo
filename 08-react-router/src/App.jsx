@@ -4,6 +4,8 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Login from './pages/Login'
 import NotFound from './pages/NotFound'
+import Posts from './pages/Posts/Index'
+import PostShow from './pages/Posts/Show'
 import HomeRecommand from './pages/HomeRecommand'
 import HomeRanking from './pages/HomeRanking'
 
@@ -14,6 +16,7 @@ export class App extends PureComponent {
         <nav className="header">
           <NavLink style={({ isActive }) => ({ color: isActive ? 'red' : '' })} to="/home">Home</NavLink>
           <Link to="/about" >About</Link>
+          <Link to="/posts">Posts</Link>
         </nav>
         <div className="content">
           <Routes>
@@ -23,6 +26,8 @@ export class App extends PureComponent {
               <Route path='ranking' element={<HomeRanking />} />
               <Route path='recommend' element={<HomeRecommand />} />
             </Route>
+            <Route path="/posts" element={<Posts />} />
+            <Route path="/posts/:id" element={<PostShow />} />
             <Route path="/about" element={<About />} />
             <Route path="/login" element={<Login />} />
             <Route path="*" element={<NotFound />} />
