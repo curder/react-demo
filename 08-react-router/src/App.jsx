@@ -2,7 +2,6 @@ import React from 'react'
 import routes from './routes'
 import { Link, NavLink, useRoutes } from 'react-router-dom';
 
-
 export function App() {
   return (
     <>

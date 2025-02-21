@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react'
-import { Link } from 'react-router-dom'
 import withRouter from '../../hocs/withRouter'
 
 export class Index extends PureComponent {
