@@ -35,7 +35,7 @@ React Hooks 提供了以下几种常用的 Hooks：
 
 ### 3.2 `useEffect`
 
-`useEffect` 是 React Hooks 中另一个常用的 Hook，它允许你在函数组件中执行副作用操作。
+`useEffect` 是 React Hooks 中另一个常用的 Hook，它允许在函数组件中执行副作用操作。
 
 - 接收一个函数作为参数，这个函数会在组件渲染到屏幕之后执行。
 - 可以返回一个函数，这个函数会在组件卸载时执行。
