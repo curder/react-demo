@@ -15,6 +15,15 @@ const App = memo(() => {
         }
     })
 
+    // 模拟网络请求，传入空数组，只执行一次
+    useEffect(() => {
+        console.log("模拟网络请求")
+
+        return () => {
+            console.log("清除网络请求")
+        }
+    }, [])
+
     return (
         <div>
             <h1>useEffect</h1>
