@@ -6,6 +6,13 @@ const App = memo(() => {
     // 更新文档标题，当 count 变化时触发
     useEffect(() => {
         document.title = count
+
+        console.log('更新文档标题')
+
+        // 清除副作用
+        return () => {
+            console.log("清除副作用")
+        }
     })
 
     return (
