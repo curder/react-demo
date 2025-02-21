@@ -61,6 +61,8 @@ React Hooks 提供了以下几种常用的 Hooks：
 
 `useReducer` 是 React Hooks 中用于实现 reducer 的 Hook。
 
+当处理的 `state` 较复杂时，使用 `useReducer` 可以使代码更清晰、更易于维护，或者当修改的 `state` 有依赖于其他 `state` 时。
+
 - 接收一个 reducer 函数和一个初始 state 作为参数。
 - 返回一个数组，第一个元素是当前 state 的值，第二个元素是 dispatch 函数，用于分发 action。
 
