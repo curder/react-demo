@@ -6,7 +6,7 @@ function usePrintLifeCycle(componentName) {
         return () => {
             console.log(`${componentName} Component Unmounted`)
         }
-    }, [])
+    }, [componentName])
 }
 
 const Banner = memo(() => {
