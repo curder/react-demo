@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 // import { UserContext, ThemeContext } from './03-useContext/contexts'
-import App from './08-custom-hook/usePintLifeCycle'
+import App from './08-custom-hook/useScrollPosition'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
