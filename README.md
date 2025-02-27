@@ -83,3 +83,4 @@
 - [08. 自定义 Hook - 打印生命周期](./09-react-hooks/src/08-custom-hook/usePintLifeCycle.jsx)
 - [08. 自定义 Hook - 获取滚动位置](./09-react-hooks/src/08-custom-hook/useScrollPosition.jsx)
 - [08. 自定义 Hook - 本地存储](./09-react-hooks/src/08-custom-hook/useLocalStorage.jsx)
+- [09. redux + react hooks](./09-react-hooks/src/09-redux-hooks)
