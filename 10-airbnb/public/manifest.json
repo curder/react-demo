@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "爱彼迎",
+  "name": "度假屋、小木屋、海滨住宅等",
   "icons": [
     {
       "src": "favicon.ico",
@@ -13,8 +13,8 @@
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
-      "type": "image/png",
+      "src": "logo.svg",
+      "type": "image/svg+xml",
       "sizes": "512x512"
     }
   ],
