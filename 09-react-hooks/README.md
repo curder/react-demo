@@ -27,6 +27,7 @@ React Hooks 提供了以下几种常用的 Hooks：
 6. `useMemo`：用于在函数组件中缓存计算结果。
 7. `useRef`：用于在函数组件中创建一个可变的 ref 对象。
 8. 自定义 Hook：用于在函数组件中复用状态逻辑。
+9. Redux 中的 `useSelector` 和 `useDispatch`：用于在函数组件中访问 Redux store和派发 action。
 
 ### 3.1 `useState`
 
@@ -102,3 +103,29 @@ function useCustomHook() {
   // ...
 }
 ```
+
+### 3.9 Redux 中的 `useSelector` 和 `useDispatch`
+
+`useSelector` 和 `useDispatch` 是 Redux 提供的 Hooks，用于在函数组件中访问 Redux store 和派发 action。
+
+- `useSelector` 接收一个 selector 函数作为参数，返回 store 中的 state。
+- `useDispatch` 返回一个 dispatch 函数，用于派发 action。
+
+```js
+import { useSelector, useDispatch,shallowEqual } from 'react-redux';
+
+function MyComponent() {
+  const count = useSelector(state => state.count, shallowEqual);
+  const dispatch = useDispatch();
+
+  // ...
+}
+```
+
+## 4. React Hooks 的注意事项
+
+1. **只在最顶层使用 Hook**：不要在循环、条件判断或者嵌套函数中调用 Hook。
+2. **只在 React 函数组件中调用 Hook**：不要在普通的 JavaScript 函数中调用 Hook。
+3. **不要在自定义 Hook 中调用其他 Hook**：自定义 Hook 是一个函数，它可以在函数组件中调用其他的 Hook，但是不能在自定义 Hook 中调用其他的 Hook。
+4. **不要在渲染过程中修改 state**：React Hooks 中的 state 是不可变的，每次更新 state 都会返回一个新的 state，而不是修改原来的 state。
+5. **不要在渲染过程中调用副作用函数**：React Hooks 中的副作用函数会在每次渲染之后执行，如果在这个函数中修改了 state，可能会导致无限循环。
