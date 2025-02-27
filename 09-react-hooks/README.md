@@ -25,6 +25,7 @@ React Hooks 提供了以下几种常用的 Hooks：
 4. `useReducer`：用于在函数组件中实现 reducer。
 5. `useCallback`：用于在函数组件中缓存回调函数。
 6. `useMemo`：用于在函数组件中缓存计算结果。
+7. `useRef`：用于在函数组件中创建一个可变的 ref 对象。
 
 ### 3.1 `useState`
 
@@ -79,3 +80,12 @@ React Hooks 提供了以下几种常用的 Hooks：
 
 - 接收一个计算函数和一个依赖数组作为参数。
 - 返回一个缓存后的计算结果。
+
+
+### 3.7 `useRef`
+
+`useRef` 是 React Hooks 中用于创建一个可变的 ref 对象的 Hook。
+
+- 接收一个初始值作为参数。
+- 返回一个可变的 ref 对象，其 `.current` 属性被初始化为传入的参数。
+- 可以用于保存任何可变的值，例如 DOM 元素、定时器 ID 等。
