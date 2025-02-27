@@ -29,6 +29,7 @@ React Hooks 提供了以下几种常用的 Hooks：
 8. 自定义 Hook：用于在函数组件中复用状态逻辑。
 9. Redux 中的 `useSelector` 和 `useDispatch`：用于在函数组件中访问 Redux store和派发 action。
 10. `useId`：用于在函数组件中生成唯一的 ID。
+11. `useTransition`：用于在函数组件中实现过渡效果。
 
 ### 3.1 `useState`
 
@@ -139,6 +140,22 @@ function MyComponent() {
 }
 ```
 
+### 3.11 `useTransition`
+
+`useTransition` 是 React Hooks 中用于实现过渡效果的 Hook。
+
+- 接收一个布尔值作为参数，表示是否启用过渡效果。
+- 返回一个数组，第一个元素是一个布尔值，表示是否正在进行过渡效果，第二个元素是一个函数，用于启动过渡效果。
+
+```js
+import { useTransition } from 'react';
+
+function MyComponent() {
+  const [isPending, startTransition] = useTransition();
+
+  // ...
+}
+```
 
 ## 4. React Hooks 的注意事项
 
