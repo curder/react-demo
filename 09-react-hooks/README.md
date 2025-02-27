@@ -28,6 +28,7 @@ React Hooks 提供了以下几种常用的 Hooks：
 7. `useRef`：用于在函数组件中创建一个可变的 ref 对象。
 8. 自定义 Hook：用于在函数组件中复用状态逻辑。
 9. Redux 中的 `useSelector` 和 `useDispatch`：用于在函数组件中访问 Redux store和派发 action。
+10. `useId`：用于在函数组件中生成唯一的 ID。
 
 ### 3.1 `useState`
 
@@ -121,6 +122,23 @@ function MyComponent() {
   // ...
 }
 ```
+
+### 3.10 `useId`
+
+`useId` 是 React Hooks 中用于生成唯一 ID 的 Hook。
+
+- 返回一个唯一的 ID，每次渲染时都会生成一个新的 ID。
+
+```js
+import { useId } from 'react';
+
+function MyComponent() {
+  const id = useId();
+
+  // ...
+}
+```
+
 
 ## 4. React Hooks 的注意事项
 
