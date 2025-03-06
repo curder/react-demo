@@ -16,7 +16,6 @@ const Home = memo(() => {
 
   return (
     <div>
-      Home
       <ul>
         {banner?.list?.map(item => <li key={item.acm}>{item.title}</li>)}
       </ul>
