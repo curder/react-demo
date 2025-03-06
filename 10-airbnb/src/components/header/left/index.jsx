@@ -1,10 +1,11 @@
 import React, { memo } from 'react'
 import { LeftContainer } from './style'
+import Logo from '@/assets/svg/logo'
 
 const Left = memo(() => {
     return (
         <LeftContainer>
-            <div>Left</div>
+            <Logo />
         </LeftContainer>
     )
 })
