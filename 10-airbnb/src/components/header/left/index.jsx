@@ -5,7 +5,9 @@ import Logo from '@/assets/svg/logo'
 const Left = memo(() => {
     return (
         <LeftContainer>
-            <Logo />
+            <div className="logo">
+                <Logo />
+            </div>
         </LeftContainer>
     )
 })
