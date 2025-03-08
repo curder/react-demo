@@ -15,7 +15,7 @@ const Home = memo(() => {
 
   const goodPriceInfo = useSelector(state => state.home.goodPriceInfo, shallowEqual)
 
-  console.log(goodPriceInfo)
+  // console.log(goodPriceInfo)
 
   return (
     <HomeContainer>
@@ -26,7 +26,7 @@ const Home = memo(() => {
           <Section title="北京高分好评房源" subTitle="来看看大家都喜欢什么" />
           <ul className='room-list'>
             {
-              goodPriceInfo?.data?.banner?.list.map((item, index) => {
+              goodPriceInfo?.data?.recommend?.list.map((item, index) => {
                 return (
                   <RoomItem key={item.acm} item={item} />
                 )
