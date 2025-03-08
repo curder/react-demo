@@ -1,28 +1,24 @@
 import React, { memo, useEffect, useState } from 'react'
-import request from '@/services'
 import HomeContainer from './style'
 import Banner from './banner'
+import { shallowEqual, useDispatch, useSelector } from 'react-redux'
+import { fetchHomeDataAction } from '@/store/modules/home'
 
 const Home = memo(() => {
-  const [banner, setBanner] = useState([])
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    // 发送请求
-    request.get({ url: '/home/multidata' })
-      .then(res => {
-        setBanner(res.data.banner)
-      }).catch(err => {
-        console.log(err)
-      })
-  }, [])
+    dispatch(fetchHomeDataAction())
+  }, [dispatch]);
+
+  const goodPriceInfo = useSelector(state => state.home.goodPriceInfo, shallowEqual)
+
+  console.log(goodPriceInfo)
 
   return (
     <HomeContainer>
       <Banner />
 
-      <ul>
-        {banner?.list?.map(item => <li key={item.acm}>{item.title}</li>)}
-      </ul>
     </HomeContainer>
   )
 })
