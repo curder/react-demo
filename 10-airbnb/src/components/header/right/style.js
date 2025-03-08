@@ -27,6 +27,7 @@ export const RightContainer = styled.div`
     }
 
     .profile {
+        position: relative;
         display: flex;
         width: 77px;
         height: 42px;
@@ -40,5 +41,35 @@ export const RightContainer = styled.div`
         cursor: pointer;
 
         ${props => props.theme.mixin.boxShadow}
+
+        .panel {
+            position: absolute;
+            right: 0;
+            top: 60px;
+            width: 240px;
+            background-color: #fff;
+            border-radius: 8px;
+            color: #666;
+            box-shadow: 0 0 6px rgba(0, 0, 0, 0.18);
+            
+            .top, .bottom {
+                padding: 10px 0;
+
+                .item {
+                    height: 40px;
+                    line-height: 40px;
+                    padding: 0 16px;
+                    &:hover {
+                        background-color: #f5f5f5;
+                    }
+                }
+            }
+
+            .top {
+                border-bottom: 1px solid #ddd;
+            }
+        }
+
+
     }
 `
