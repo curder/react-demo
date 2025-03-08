@@ -1,5 +1,7 @@
 import React, { memo, useEffect, useState } from 'react'
 import request from '@/services'
+import HomeContainer from './style'
+import Banner from './banner'
 
 const Home = memo(() => {
   const [banner, setBanner] = useState([])
@@ -15,11 +17,13 @@ const Home = memo(() => {
   }, [])
 
   return (
-    <div>
+    <HomeContainer>
+      <Banner />
+
       <ul>
         {banner?.list?.map(item => <li key={item.acm}>{item.title}</li>)}
       </ul>
-    </div>
+    </HomeContainer>
   )
 })
 

@@ -8,7 +8,7 @@ const App = memo(() => {
     return (
         <div className='app'>
             <Header />
-            <div className="contant">
+            <div className="content">
                 {useRoutes(routes)}
             </div>
             <Footer />
