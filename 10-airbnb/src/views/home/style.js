@@ -9,12 +9,6 @@ export const HomeContainer = styled.div`
     .good-price {
         margin-top: 40px; 
     }
-
-    .room-list {
-        display: flex;
-        flex-wrap: wrap;
-        margin: 0 -8px;
-    }
 `
 
 export default HomeContainer
