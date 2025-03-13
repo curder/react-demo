@@ -5,4 +5,3 @@
 ```bash
 npx create-react-app 11-airbnb --template typescript
 ```
-
