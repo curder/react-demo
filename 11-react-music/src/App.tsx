@@ -1,5 +1,6 @@
 import { useRoutes } from 'react-router-dom'
-import routers from './router'
+import routers from '@/router'
+import Download from './pages/download'
 
 function App() {
   return (
