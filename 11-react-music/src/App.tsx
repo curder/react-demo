@@ -1,16 +1,18 @@
 import { Link, useRoutes } from 'react-router-dom'
 import routers from '@/router'
 import { Suspense } from 'react'
-import { shallowEqual } from 'react-redux'
-import { useAppSelector } from '@/store'
+import { appShallowEqual, useAppDispatch, useAppSelector } from '@/store'
+import { incrementAction } from '@/store/modules/counter'
 
 function App() {
   const { count } = useAppSelector(
     (state) => ({
       count: state.counter.count
     }),
-    shallowEqual
+    appShallowEqual
   )
+
+  const dispatch = useAppDispatch()
 
   return (
     <>
@@ -24,6 +26,7 @@ function App() {
       </div>
 
       <h2>当前计数：{count}</h2>
+      <button onClick={(e) => dispatch(incrementAction())}>自增</button>
 
       <Suspense fallback="Loading...">{useRoutes(routers)}</Suspense>
     </>
