@@ -1,16 +1,17 @@
+import { lazy } from 'react'
 import { RouteObject } from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
 
-import Discover from '@/pages/discover/recommend'
-import My from '@/pages/my'
-import Firend from '@/pages/firend'
-import Download from '@/pages/download'
+const Discover = lazy(() => import('@/pages/discover/recommend'))
+const My = lazy(() => import('@/pages/my'))
+const Friend = lazy(() => import('@/pages/firend'))
+const Download = lazy(() => import('@/pages/download'))
 
 const routers: RouteObject[] = [
   { path: '/', element: <Navigate to="/discover" /> },
   { path: '/discover', element: <Discover /> },
   { path: '/my', element: <My /> },
-  { path: '/friend', element: <Firend /> },
+  { path: '/friend', element: <Friend /> },
   { path: '/download', element: <Download /> }
 ]
 
