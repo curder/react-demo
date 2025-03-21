@@ -1,12 +1,17 @@
-import { memo } from 'react'
+import { memo, Suspense } from 'react'
 import type { FC, ReactNode } from 'react'
+import { Link, Outlet } from 'react-router-dom'
 
-interface DiscoverProps {
+interface RecommendProps {
   children?: ReactNode
 }
 
-const Discover: FC<DiscoverProps> = (props) => {
-  return <>Discover</>
+const Recommend: FC<RecommendProps> = (props) => {
+  return (
+    <>
+      <h2>Recommend</h2>
+    </>
+  )
 }
 
-export default memo(Discover)
+export default memo(Recommend)
