@@ -1,11 +1,11 @@
-import React, { memo } from 'react'
-import type { ReactNode } from 'react'
+import { memo } from 'react'
+import type { FC, ReactNode } from 'react'
 
 interface DownloadProps {
   children?: ReactNode
 }
 
-const Download: React.FC<DownloadProps> = (props) => {
+const Download: FC<DownloadProps> = (props) => {
   return <>Download</>
 }
 

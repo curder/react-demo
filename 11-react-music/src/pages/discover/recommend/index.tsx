@@ -1,11 +1,12 @@
 import { memo } from 'react'
+import type { FC, ReactNode } from 'react'
 
-const Discover = memo((props) => {
-  return (
-    <>
-      <div>Discover</div>
-    </>
-  )
-})
+interface DiscoverProps {
+  children?: ReactNode
+}
 
-export default Discover
+const Discover: FC<DiscoverProps> = (props) => {
+  return <>Discover</>
+}
+
+export default memo(Discover)
