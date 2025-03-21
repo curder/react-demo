@@ -1,8 +1,17 @@
 import { Link, useRoutes } from 'react-router-dom'
 import routers from '@/router'
 import { Suspense } from 'react'
+import { shallowEqual } from 'react-redux'
+import { useAppSelector } from '@/store'
 
 function App() {
+  const { count } = useAppSelector(
+    (state) => ({
+      count: state.counter.count
+    }),
+    shallowEqual
+  )
+
   return (
     <>
       <div className="App">
@@ -13,6 +22,9 @@ function App() {
           <Link to="/download">下载客户端</Link>
         </div>
       </div>
+
+      <h2>当前计数：{count}</h2>
+
       <Suspense fallback="Loading...">{useRoutes(routers)}</Suspense>
     </>
   )
