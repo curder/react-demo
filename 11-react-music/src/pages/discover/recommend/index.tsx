@@ -52,9 +52,9 @@ const Recommend: FC<RecommendProps> = (props) => {
 
       {banners.map((banner) => {
         return (
-          <div key={banner.imageUrl}>
-            <img src={banner.imageUrl} alt="" />
-          </div>
+          <ul key={banner.imageUrl}>
+            <li>{banner.imageUrl}</li>
+          </ul>
         )
       })}
     </>
