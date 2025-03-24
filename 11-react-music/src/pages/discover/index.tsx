@@ -1,6 +1,8 @@
 import { memo, Suspense } from 'react'
 import type { FC, ReactNode } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet } from 'react-router-dom'
+import { DiscoverWrapper } from './style'
+import { discoverMenu } from '@/assets/data/local-data'
 
 interface DiscoverProps {
   children?: ReactNode
@@ -8,19 +10,22 @@ interface DiscoverProps {
 
 const Discover: FC<DiscoverProps> = (props) => {
   return (
-    <>
-      <div>
-        <Link to="/discover/recommend">推荐</Link>
-        <Link to="/discover/toplist">排行榜</Link>
-        <Link to="/discover/playlist">歌单</Link>
-        <Link to="/discover/djradio">主播电台</Link>
-        <Link to="/discover/artist">歌手</Link>
-        <Link to="/discover/album">新碟上架</Link>
+    <DiscoverWrapper>
+      <div className="nav wrap-v1">
+        {discoverMenu.map((item) => {
+          return (
+            <div className="item">
+              <NavLink key={item.link} to={item.link}>
+                {item.title}
+              </NavLink>
+            </div>
+          )
+        })}
       </div>
       <Suspense fallback="Loading...">
         <Outlet />
       </Suspense>
-    </>
+    </DiscoverWrapper>
   )
 }
 
