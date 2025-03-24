@@ -1,6 +1,6 @@
 import { memo, Suspense } from 'react'
 import type { FC, ReactNode } from 'react'
-import { Link, NavLink, Outlet } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
 import { DiscoverWrapper } from './style'
 import { discoverMenu } from '@/assets/data/local-data'
 
