@@ -1,21 +1,41 @@
 import { memo } from 'react'
 import type { FC, ReactNode } from 'react'
 import { Link } from 'react-router-dom'
-import { HeaderWrapper } from './style'
+import { HeaderLeft, HeaderRight, HeaderWrapper } from './style'
+import titles from '@/assets/data/header/titles.json'
 
 interface HeaderProps {
   children?: ReactNode
 }
 
 const Header: FC<HeaderProps> = (props) => {
+  const showItem = (item: any) => {
+    return item.type === 'path' ? (
+      <Link to={item.link}>{item.title}</Link>
+    ) : (
+      <a href={item.link} rel="noreferrer" target="_blank">
+        {item.title}
+      </a>
+    )
+  }
+
   return (
     <>
       <HeaderWrapper>
-        <div className="content warp-v1">
-          <Link to="/discover">发现音乐</Link>
-          <Link to="/my">我的音乐</Link>
-          <Link to="/friend">关注</Link>
-          <Link to="/download">下载客户端</Link>
+        <div className="content wrap-v1">
+          <HeaderLeft>
+            <a href="#" className="logo sprite_01">
+              网易云音乐
+            </a>
+            <ul className="title-list">
+              {titles.map((item, index) => (
+                <li className="item" key={index}>
+                  {showItem(item)}
+                </li>
+              ))}
+            </ul>
+          </HeaderLeft>
+          <HeaderRight></HeaderRight>
         </div>
       </HeaderWrapper>
     </>
