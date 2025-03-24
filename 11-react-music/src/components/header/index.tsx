@@ -1,6 +1,6 @@
 import { memo } from 'react'
 import type { FC, ReactNode } from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { HeaderLeft, HeaderRight, HeaderWrapper } from './style'
 import titles from '@/assets/data/header/titles.json'
 
@@ -8,10 +8,19 @@ interface HeaderProps {
   children?: ReactNode
 }
 
+interface ITitle {
+  title: string
+  link: string
+  type: string
+}
+
 const Header: FC<HeaderProps> = (props) => {
-  const showItem = (item: any) => {
+  const showItem = (item: ITitle) => {
     return item.type === 'path' ? (
-      <Link to={item.link}>{item.title}</Link>
+      <NavLink to={item.link}>
+        {item.title}
+        <i className="icon sprite_01"></i>
+      </NavLink>
     ) : (
       <a href={item.link} rel="noreferrer" target="_blank">
         {item.title}
@@ -37,6 +46,7 @@ const Header: FC<HeaderProps> = (props) => {
           </HeaderLeft>
           <HeaderRight></HeaderRight>
         </div>
+        <div className="divider"></div>
       </HeaderWrapper>
     </>
   )
