@@ -1,62 +1,23 @@
-import Request from '@/services'
+import { useAppDispatch } from '@/store'
 import { memo, useEffect, useState } from 'react'
 import type { FC, ReactNode } from 'react'
+import { fetchBannersDataAction } from './store/recommend'
+import Banners from './components/banners'
 
 interface RecommendProps {
   children?: ReactNode
 }
 
-interface Banner {
-  imageUrl: string
-  targetId: number
-  adid: any
-  targetType: number
-  titleColor: string
-  typeTitle: string
-  url: any
-  exclusive: boolean
-  monitorImpress: any
-  monitorClick: any
-  monitorType: any
-  monitorImpressList: any
-  monitorClickList: any
-  monitorBlackList: any
-  extMonitor: any
-  extMonitorInfo: any
-  adSource: any
-  adLocation: any
-  adDispatchJson: any
-  encodeId: string
-  program: any
-  event: any
-  video: any
-  song: any
-  scm: string
-  bannerBizType: string
-}
-
 const Recommend: FC<RecommendProps> = (props) => {
-  const [banners, setBanners] = useState<Banner[]>([])
-
+  const dispatch = useAppDispatch()
   useEffect(() => {
-    // 数据请求
-    Request.get({
-      url: '/banner'
-    }).then(({ banners }) => {
-      setBanners(banners)
-    })
+    dispatch(fetchBannersDataAction())
   }, [])
+
   return (
     <>
+      <Banners />
       <h2>Recommend</h2>
-
-      {banners.map((banner) => {
-        return (
-          <ul key={banner.imageUrl}>
-            <li>{banner.imageUrl}</li>
-          </ul>
-        )
-      })}
     </>
   )
 }

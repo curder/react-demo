@@ -11,17 +11,17 @@ interface DiscoverProps {
 const Discover: FC<DiscoverProps> = (props) => {
   return (
     <DiscoverWrapper>
-      <div className="wrap-v1">
-        <div className="nav">
-          {discoverMenu.map((item) => {
-            return (
-              <div className="item">
-                <NavLink key={item.link} to={item.link}>
-                  {item.title}
-                </NavLink>
-              </div>
-            )
-          })}
+      <div className="top">
+        <div className="wrap-v1">
+          <div className="nav">
+            {discoverMenu.map((item) => {
+              return (
+                <div key={item.link} className="item">
+                  <NavLink to={item.link}>{item.title}</NavLink>
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
       <Suspense fallback="Loading...">

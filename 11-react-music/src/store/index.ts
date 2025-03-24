@@ -7,11 +7,13 @@ import {
 } from 'react-redux'
 // 导入您的 reducers
 import counter from './modules/counter'
+import recommend from '@/pages/discover/recommend/store/recommend'
 
 // 创建符合类型的 store
 const store = configureStore({
   reducer: {
-    counter
+    counter,
+    recommend
   }
 })
 
