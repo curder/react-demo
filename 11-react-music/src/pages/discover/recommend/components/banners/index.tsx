@@ -5,6 +5,7 @@ import type { FC, ReactNode } from 'react'
 import { appShallowEqual, useAppSelector } from '@/store'
 import { BannerWrapper, BannerLeft, BannerRight, BannerControl } from './style'
 import { CarouselRef } from 'antd/es/carousel'
+import { Link } from 'react-router-dom'
 
 interface BannersProps {
   children?: ReactNode
@@ -83,7 +84,12 @@ const Banners: FC<BannersProps> = (props) => {
             })}
           </ul>
         </BannerLeft>
-        <BannerRight></BannerRight>
+        <BannerRight>
+          <Link className="btn" to="/download">
+            下载客户端
+          </Link>
+          <p>PC 安卓 iPhone WP iPad Mac 六大客户端</p>
+        </BannerRight>
         <BannerControl>
           <button
             className="btn left"

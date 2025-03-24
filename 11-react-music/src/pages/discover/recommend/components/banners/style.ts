@@ -49,16 +49,33 @@ export const BannerLeft = styled.div`
     }
   }
 `
-export const BannerRight = styled.a.attrs({
-  href: '/download',
-  target: '_blank'
-})`
+export const BannerRight = styled.div`
   position: absolute;
+  top: 0;
   z-index: 20;
   right: -1px;
   width: 254px;
   height: 285px;
   background: url(${require('@/assets/images/download.png')});
+
+  .btn {
+    display: block;
+    width: 215px;
+    height: 56px;
+    margin: 186px 0 0 19px;
+    background-position: 0 9999px;
+    text-indent: -9999px;
+    &:hover {
+      background-position: 0 -290px;
+      text-decoration: none;
+      background-image: url(${require('@/assets/images/download.png')});
+    }
+  }
+  p {
+    margin: 10px auto;
+    text-align: center;
+    color: #8d8d8d;
+  }
 `
 export const BannerControl = styled.div`
   position: absolute;
