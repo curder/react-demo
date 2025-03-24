@@ -2,7 +2,14 @@ import { useAppDispatch } from '@/store'
 import { memo, useEffect, useState } from 'react'
 import type { FC, ReactNode } from 'react'
 import { fetchBannersDataAction } from './store/recommend'
-import Banners from './components/banners'
+import TopBanners from '@/pages/discover/recommend/components/top-banners'
+import {
+  RecommendLeft,
+  RecommendRight,
+  RecommendSection,
+  RecommendWrapper
+} from './style'
+import HotRecommend from '@/pages/discover/recommend/components/hot-recommend'
 
 interface RecommendProps {
   children?: ReactNode
@@ -15,10 +22,15 @@ const Recommend: FC<RecommendProps> = (props) => {
   }, [])
 
   return (
-    <>
-      <Banners />
-      <h2>Recommend</h2>
-    </>
+    <RecommendWrapper>
+      <TopBanners />
+      <RecommendSection className="wrap-v2">
+        <RecommendLeft>
+          <HotRecommend />
+        </RecommendLeft>
+        <RecommendRight>Right</RecommendRight>
+      </RecommendSection>
+    </RecommendWrapper>
   )
 }
 

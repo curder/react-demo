@@ -7,11 +7,11 @@ import { BannerWrapper, BannerLeft, BannerRight, BannerControl } from './style'
 import { CarouselRef } from 'antd/es/carousel'
 import { Link } from 'react-router-dom'
 
-interface BannersProps {
+interface TopBannersProps {
   children?: ReactNode
 }
 
-const Banners: FC<BannersProps> = (props) => {
+const TopBanners: FC<TopBannersProps> = (props) => {
   const bannerRef = useRef<CarouselRef>(null)
   const [currentIndex, setCurrentIndex] = useState<number>(0)
 
@@ -93,11 +93,11 @@ const Banners: FC<BannersProps> = (props) => {
         <BannerControl>
           <button
             className="btn left"
-            onClick={(e) => handlePrevClick()}
+            onClick={() => handlePrevClick()}
           ></button>
           <button
             className="btn right"
-            onClick={(e) => handleNextClick()}
+            onClick={() => handleNextClick()}
           ></button>
         </BannerControl>
       </div>
@@ -105,4 +105,4 @@ const Banners: FC<BannersProps> = (props) => {
   )
 }
 
-export default memo(Banners)
+export default memo(TopBanners)
