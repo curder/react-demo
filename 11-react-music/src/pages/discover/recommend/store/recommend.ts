@@ -1,8 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { getBanners } from '../services/recommend'
 
+interface IBanner {
+  imageUrl: string
+  typeTitle: string
+}
 interface IRecommendState {
-  banners: any[]
+  banners: IBanner[]
 }
 
 export const fetchBannersDataAction = createAsyncThunk(
