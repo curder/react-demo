@@ -3,7 +3,8 @@ import type { FC, ReactNode } from 'react'
 import { NavLink } from 'react-router-dom'
 import { HeaderLeft, HeaderRight, HeaderWrapper } from './style'
 import titles from '@/assets/data/header/titles.json'
-
+import { SearchOutlined } from '@ant-design/icons'
+import { Input } from 'antd'
 interface HeaderProps {
   children?: ReactNode
 }
@@ -44,7 +45,15 @@ const Header: FC<HeaderProps> = (props) => {
               ))}
             </ul>
           </HeaderLeft>
-          <HeaderRight></HeaderRight>
+          <HeaderRight>
+            <Input
+              className="search"
+              placeholder="音乐/视频/电台/用户"
+              prefix={<SearchOutlined />}
+            />
+            <div className="center">创作者中心</div>
+            <div className="login">登录</div>
+          </HeaderRight>
         </div>
         <div className="divider"></div>
       </HeaderWrapper>
