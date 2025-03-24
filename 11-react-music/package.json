@@ -44,6 +44,7 @@
     "@types/styled-components": "^5.1.34",
     "antd": "^5.24.4",
     "axios": "^1.8.4",
+    "clsx": "^2.1.1",
     "craco-less": "^3.0.1",
     "eslint": "^9.22.0",
     "eslint-config-prettier": "^10.1.1",

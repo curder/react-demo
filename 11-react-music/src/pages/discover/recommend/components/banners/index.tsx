@@ -1,6 +1,7 @@
-import { memo, useRef } from 'react'
+import clsx from 'clsx'
+import { memo, useRef, useState } from 'react'
 import { Carousel } from 'antd'
-import type { FC, ReactNode, SyntheticEvent } from 'react'
+import type { FC, ReactNode } from 'react'
 import { appShallowEqual, useAppSelector } from '@/store'
 import { BannerWrapper, BannerLeft, BannerRight, BannerControl } from './style'
 import { CarouselRef } from 'antd/es/carousel'
@@ -11,6 +12,7 @@ interface BannersProps {
 
 const Banners: FC<BannersProps> = (props) => {
   const bannerRef = useRef<CarouselRef>(null)
+  const [currentIndex, setCurrentIndex] = useState<number>(0)
 
   const { banners } = useAppSelector(
     (state) => ({
@@ -19,19 +21,40 @@ const Banners: FC<BannersProps> = (props) => {
     appShallowEqual
   )
 
-  const handlePrevClick = (e: SyntheticEvent) => {
+  const handleAfterChange = (current: number) => {
+    setCurrentIndex(current)
+  }
+
+  const handlePrevClick = () => {
     bannerRef.current?.prev()
   }
 
-  const handleNextClick = (e: SyntheticEvent) => {
+  const handleNextClick = () => {
     bannerRef.current?.next()
   }
 
+  // 获取动态的背景图片
+  let bgImage = banners[currentIndex]?.imageUrl
+  if (bgImage) {
+    bgImage = bgImage + '?imageView&blur=40x20'
+  }
+
   return (
-    <BannerWrapper>
+    <BannerWrapper
+      style={{
+        background: `url(${bgImage}) no-repeat center/6000px`
+      }}
+    >
       <div className="banner wrap-v2">
         <BannerLeft>
-          <Carousel autoplay autoplaySpeed={3000} ref={bannerRef}>
+          <Carousel
+            autoplay
+            dots={false}
+            effect="fade"
+            ref={bannerRef}
+            autoplaySpeed={3000}
+            afterChange={(current) => handleAfterChange(current)}
+          >
             {banners.map((item) => {
               return (
                 <div className="banner-item" key={item.imageUrl}>
@@ -44,16 +67,31 @@ const Banners: FC<BannersProps> = (props) => {
               )
             })}
           </Carousel>
+
+          <ul className="dots">
+            {banners.map((item, index) => {
+              return (
+                <li
+                  key={item.imageUrl}
+                  onClick={() => bannerRef.current?.goTo(index)}
+                >
+                  <span
+                    className={clsx('item', currentIndex === index && 'active')}
+                  ></span>
+                </li>
+              )
+            })}
+          </ul>
         </BannerLeft>
         <BannerRight></BannerRight>
         <BannerControl>
           <button
             className="btn left"
-            onClick={(e) => handlePrevClick(e)}
+            onClick={(e) => handlePrevClick()}
           ></button>
           <button
             className="btn right"
-            onClick={(e) => handleNextClick(e)}
+            onClick={(e) => handleNextClick()}
           ></button>
         </BannerControl>
       </div>
