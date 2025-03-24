@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 export const BannerWrapper = styled.div`
   .banner {
-    height: 270px;
+    height: 285px;
 
     display: flex;
     position: relative;
@@ -14,9 +14,10 @@ export const BannerLeft = styled.div`
 
   .banner-item {
     overflow: hidden;
-    height: 270px;
+    height: 285px;
     .image {
       width: 100%;
+      height: 100%;
     }
   }
 
@@ -56,13 +57,15 @@ export const BannerRight = styled.a.attrs({
   z-index: 20;
   right: -1px;
   width: 254px;
-  height: 270px;
+  height: 285px;
   background: url(${require('@/assets/images/download.png')});
 `
 export const BannerControl = styled.div`
   position: absolute;
+  display: block;
   left: 0;
   right: 0;
+  margin-top: -31px;
   top: 50%;
   transform: translateY(-50%);
 
