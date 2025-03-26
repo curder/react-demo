@@ -2,7 +2,8 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import {
   getBanners,
   getHotRecommends,
-  getNewAlbums
+  getNewAlbums,
+  getToplist
 } from '../services/recommend'
 import { SongItem } from '@/components/song-item'
 import { AlbumItem } from '@/components/album-item'
@@ -16,6 +17,9 @@ interface IRecommendState {
   banners: IBanner[]
   hotRecommends: SongItem[]
   newAlbums: AlbumItem[]
+  upToplist: any[]
+  newToplist: any[]
+  originToplist: any[]
 }
 
 export const fetchRecommendsAction = createAsyncThunk(
@@ -33,13 +37,29 @@ export const fetchRecommendsAction = createAsyncThunk(
     getNewAlbums().then((res) => {
       dispatch(changeNewAlbumsAction(res.albums))
     })
+    // 获取榜单数据
+    // 1. 飙升榜
+    getToplist(19723756).then((res) => {
+      dispatch(changeUpToplistAction(res.playlist))
+    })
+    // 2. 新歌榜
+    getToplist(3779629).then((res) => {
+      dispatch(changeNewToplistAction(res.playlist))
+    })
+    // 3. 原创榜
+    getToplist(2884035).then((res) => {
+      dispatch(changeOriginToplistAction(res.playlist))
+    })
   }
 )
 
 const initialState: IRecommendState = {
   banners: [],
   hotRecommends: [],
-  newAlbums: []
+  newAlbums: [],
+  upToplist: [],
+  newToplist: [],
+  originToplist: []
 }
 
 const recommendSlice = createSlice({
@@ -54,6 +74,15 @@ const recommendSlice = createSlice({
     },
     changeNewAlbumsAction(state, { payload }) {
       state.newAlbums = payload
+    },
+    changeUpToplistAction(state, { payload }) {
+      state.upToplist = payload
+    },
+    changeNewToplistAction(state, { payload }) {
+      state.newToplist = payload
+    },
+    changeOriginToplistAction(state, { payload }) {
+      state.originToplist = payload
     }
   }
 })
@@ -61,6 +90,9 @@ const recommendSlice = createSlice({
 export const {
   changeRecommendListAction,
   changeHotRecommendsAction,
-  changeNewAlbumsAction
+  changeNewAlbumsAction,
+  changeUpToplistAction,
+  changeNewToplistAction,
+  changeOriginToplistAction
 } = recommendSlice.actions
 export default recommendSlice.reducer
