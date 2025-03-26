@@ -7,6 +7,7 @@ import {
 } from '../services/recommend'
 import { SongItem } from '@/components/song-item'
 import { AlbumItem } from '@/components/album-item'
+import { ToplistItem } from '../components/toplist/item'
 
 interface IBanner {
   imageUrl: string
@@ -17,9 +18,9 @@ interface IRecommendState {
   banners: IBanner[]
   hotRecommends: SongItem[]
   newAlbums: AlbumItem[]
-  upToplist: any[]
-  newToplist: any[]
-  originToplist: any[]
+  upToplist: ToplistItem
+  newToplist: ToplistItem
+  originToplist: ToplistItem
 }
 
 export const fetchRecommendsAction = createAsyncThunk(
@@ -57,9 +58,9 @@ const initialState: IRecommendState = {
   banners: [],
   hotRecommends: [],
   newAlbums: [],
-  upToplist: [],
-  newToplist: [],
-  originToplist: []
+  upToplist: {} as ToplistItem,
+  newToplist: {} as ToplistItem,
+  originToplist: {} as ToplistItem
 }
 
 const recommendSlice = createSlice({
