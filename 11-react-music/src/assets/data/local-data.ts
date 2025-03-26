@@ -25,6 +25,14 @@ export const headerLinks = [
   }
 ]
 
+export const hotRecommendItems = [
+  { title: '华语', path: '/discover/playlist?cat=华语' },
+  { title: '流行', path: '/discover/playlist?cat=流行' },
+  { title: '摇滚', path: '/discover/playlist?cat=摇滚' },
+  { title: '民谣', path: '/discover/playlist?cat=民谣' },
+  { title: '电子', path: '/discover/playlist?cat=电子' }
+]
+
 export const footerLinks = [
   {
     title: '服务条款',
