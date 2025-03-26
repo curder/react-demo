@@ -10,7 +10,8 @@ import {
   RecommendWrapper
 } from './style'
 import HotRecommend from '@/pages/discover/recommend/components/hot-recommend'
-import NewAlbum from './components/new-album'
+import NewAlbum from '@/pages/discover/recommend/components/new-album'
+import Toplist from '@/pages/discover/recommend/components/toplist'
 
 interface RecommendProps {
   children?: ReactNode
@@ -29,6 +30,7 @@ const Recommend: FC<RecommendProps> = (props) => {
         <RecommendLeft>
           <HotRecommend />
           <NewAlbum />
+          <Toplist />
         </RecommendLeft>
         <RecommendRight>Right</RecommendRight>
       </RecommendSection>

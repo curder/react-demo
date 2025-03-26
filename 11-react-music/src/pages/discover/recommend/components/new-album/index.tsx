@@ -27,7 +27,7 @@ const NewAlbum: FC<NewAlbumProps> = (props) => {
     <NewAlbumWrapper>
       <SectionHeader title="新碟上架" moreLink="/discover/album" />
 
-      <div className="content">
+      <div className="album-content">
         <button
           className="sprite_02 arrow arrow-left"
           onClick={handlePrevClick}
