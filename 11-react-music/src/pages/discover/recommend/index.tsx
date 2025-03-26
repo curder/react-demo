@@ -1,11 +1,7 @@
 import { useAppDispatch } from '@/store'
 import { memo, useEffect, useState } from 'react'
 import type { FC, ReactNode } from 'react'
-import {
-  fetchBannersDataAction,
-  fetchHotRecommendsAction,
-  fetchNewAlbumsAction
-} from './store/recommend'
+import { fetchRecommendsAction } from './store/recommend'
 import TopBanners from '@/pages/discover/recommend/components/top-banners'
 import {
   RecommendLeft,
@@ -23,9 +19,7 @@ interface RecommendProps {
 const Recommend: FC<RecommendProps> = (props) => {
   const dispatch = useAppDispatch()
   useEffect(() => {
-    dispatch(fetchBannersDataAction())
-    dispatch(fetchHotRecommendsAction())
-    dispatch(fetchNewAlbumsAction())
+    dispatch(fetchRecommendsAction())
   }, [])
 
   return (

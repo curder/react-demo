@@ -18,29 +18,21 @@ interface IRecommendState {
   newAlbums: AlbumItem[]
 }
 
-export const fetchBannersDataAction = createAsyncThunk(
-  'banners',
-  async (arg, { dispatch }) => {
-    const { banners } = await getBanners()
-    dispatch(changeRecommendListAction(banners))
-  }
-)
-
-export const fetchHotRecommendsAction = createAsyncThunk(
-  'hotRecommend',
-  async (arg, { dispatch }) => {
-    const { result } = await getHotRecommends()
-
-    dispatch(changeHotRecommendsAction(result))
-  }
-)
-
-// 获取新碟上架数据
-export const fetchNewAlbumsAction = createAsyncThunk(
-  'newAlbum',
-  async (arg, { dispatch }) => {
-    const { albums } = await getNewAlbums()
-    dispatch(changeNewAlbumsAction(albums))
+export const fetchRecommendsAction = createAsyncThunk(
+  'fetchRecommends',
+  async (_, { dispatch }) => {
+    // 获取轮播图
+    getBanners().then((res) => {
+      dispatch(changeRecommendListAction(res.banners))
+    })
+    // 获取热门推荐
+    getHotRecommends().then((res) => {
+      dispatch(changeHotRecommendsAction(res.result))
+    })
+    // 获取新碟上架
+    getNewAlbums().then((res) => {
+      dispatch(changeNewAlbumsAction(res.albums))
+    })
   }
 )
 
