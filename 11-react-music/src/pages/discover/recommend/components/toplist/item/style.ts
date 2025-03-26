@@ -6,6 +6,7 @@ export const ToplistItemWrapper = styled.div`
     width: 228px;
   }
 
+  // 头部
   .toplist-item-header {
     height: 100px;
     display: flex;
@@ -73,6 +74,7 @@ export const ToplistItemWrapper = styled.div`
     }
   }
 
+  // 歌曲列表
   .toplist-items {
     .toplist-item {
       position: relative;
@@ -154,6 +156,7 @@ export const ToplistItemWrapper = styled.div`
     }
   }
 
+  // 底部
   .toplist-item-bottom {
     height: 32px;
     display: flex;
