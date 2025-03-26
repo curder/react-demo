@@ -12,6 +12,7 @@ import {
 import HotRecommend from '@/pages/discover/recommend/components/hot-recommend'
 import NewAlbum from '@/pages/discover/recommend/components/new-album'
 import Toplist from '@/pages/discover/recommend/components/toplist'
+import UserLogin from '@/pages/discover/recommend/components/user-login'
 
 interface RecommendProps {
   children?: ReactNode
@@ -32,7 +33,9 @@ const Recommend: FC<RecommendProps> = (props) => {
           <NewAlbum />
           <Toplist />
         </RecommendLeft>
-        <RecommendRight>Right</RecommendRight>
+        <RecommendRight>
+          <UserLogin />
+        </RecommendRight>
       </RecommendSection>
     </RecommendWrapper>
   )
