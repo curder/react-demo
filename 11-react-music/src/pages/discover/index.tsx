@@ -11,7 +11,7 @@ interface DiscoverProps {
 const Discover: FC<DiscoverProps> = (props) => {
   return (
     <DiscoverWrapper>
-      <div className="top">
+      <div className="submenu">
         <div className="wrap-v1">
           <div className="nav">
             {discoverMenu.map((item) => {
