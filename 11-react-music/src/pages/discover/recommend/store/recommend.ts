@@ -3,11 +3,13 @@ import {
   getBanners,
   getHotRecommends,
   getNewAlbums,
-  getToplist
+  getToplist,
+  getArtistList
 } from '../services/recommend'
 import { SongItem } from '@/components/song-item'
 import { AlbumItem } from '@/components/album-item'
-import { ToplistItem } from '../components/toplist/item'
+import { ToplistItem } from '@/pages/discover/recommend/components/toplist/item'
+import { Artist } from '@/pages/discover/recommend/components/settle-artist'
 
 interface IBanner {
   imageUrl: string
@@ -21,6 +23,7 @@ interface IRecommendState {
   upToplist: ToplistItem
   newToplist: ToplistItem
   originToplist: ToplistItem
+  artistList: Artist[]
 }
 
 export const fetchRecommendsAction = createAsyncThunk(
@@ -51,6 +54,11 @@ export const fetchRecommendsAction = createAsyncThunk(
     getToplist(2884035).then((res) => {
       dispatch(changeOriginToplistAction(res.playlist))
     })
+
+    // 入驻歌手
+    getArtistList().then(({ artists }) => {
+      dispatch(changeArtistListAction(artists))
+    })
   }
 )
 
@@ -60,7 +68,8 @@ const initialState: IRecommendState = {
   newAlbums: [],
   upToplist: {} as ToplistItem,
   newToplist: {} as ToplistItem,
-  originToplist: {} as ToplistItem
+  originToplist: {} as ToplistItem,
+  artistList: []
 }
 
 const recommendSlice = createSlice({
@@ -84,6 +93,9 @@ const recommendSlice = createSlice({
     },
     changeOriginToplistAction(state, { payload }) {
       state.originToplist = payload
+    },
+    changeArtistListAction(state, { payload }) {
+      state.artistList = payload
     }
   }
 })
@@ -94,6 +106,7 @@ export const {
   changeNewAlbumsAction,
   changeUpToplistAction,
   changeNewToplistAction,
-  changeOriginToplistAction
+  changeOriginToplistAction,
+  changeArtistListAction
 } = recommendSlice.actions
 export default recommendSlice.reducer
