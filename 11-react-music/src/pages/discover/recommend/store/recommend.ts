@@ -1,6 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import { getBanners, getHotRecommends } from '../services/recommend'
+import {
+  getBanners,
+  getHotRecommends,
+  getNewAlbums
+} from '../services/recommend'
 import { SongItem } from '@/components/song-item'
+import { Result } from 'antd'
 
 interface IBanner {
   imageUrl: string
@@ -10,27 +15,39 @@ interface IBanner {
 interface IRecommendState {
   banners: IBanner[]
   hotRecommends: SongItem[]
+  newAlbums: any[]
 }
 
 export const fetchBannersDataAction = createAsyncThunk(
   'banners',
   async (arg, { dispatch }) => {
-    const result = await getBanners()
-    dispatch(changeRecommendListAction(result.banners))
+    const { banners } = await getBanners()
+    dispatch(changeRecommendListAction(banners))
   }
 )
 
 export const fetchHotRecommendsAction = createAsyncThunk(
   'hotRecommend',
   async (arg, { dispatch }) => {
-    const restult = await getHotRecommends(8)
-    dispatch(changeHotRecommendsAction(restult.result))
+    const { result } = await getHotRecommends()
+
+    dispatch(changeHotRecommendsAction(result))
+  }
+)
+
+// 获取新碟上架数据
+export const fetchNewAlbumsAction = createAsyncThunk(
+  'newAlbum',
+  async (arg, { dispatch }) => {
+    const { albums } = await getNewAlbums()
+    dispatch(changeNewAlbumsAction(albums))
   }
 )
 
 const initialState: IRecommendState = {
   banners: [],
-  hotRecommends: []
+  hotRecommends: [],
+  newAlbums: []
 }
 
 const recommendSlice = createSlice({
@@ -42,10 +59,16 @@ const recommendSlice = createSlice({
     },
     changeHotRecommendsAction(state, { payload }) {
       state.hotRecommends = payload
+    },
+    changeNewAlbumsAction(state, { payload }) {
+      state.newAlbums = payload
     }
   }
 })
 
-export const { changeRecommendListAction, changeHotRecommendsAction } =
-  recommendSlice.actions
+export const {
+  changeRecommendListAction,
+  changeHotRecommendsAction,
+  changeNewAlbumsAction
+} = recommendSlice.actions
 export default recommendSlice.reducer

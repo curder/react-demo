@@ -33,6 +33,10 @@ export const NewAlbumWrapper = styled.div`
         background-position: -320px -75px;
       }
     }
+
+    .banner {
+      overflow: hidden;
+    }
   }
 
   .album {

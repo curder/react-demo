@@ -3,7 +3,8 @@ import { memo, useEffect, useState } from 'react'
 import type { FC, ReactNode } from 'react'
 import {
   fetchBannersDataAction,
-  fetchHotRecommendsAction
+  fetchHotRecommendsAction,
+  fetchNewAlbumsAction
 } from './store/recommend'
 import TopBanners from '@/pages/discover/recommend/components/top-banners'
 import {
@@ -24,6 +25,7 @@ const Recommend: FC<RecommendProps> = (props) => {
   useEffect(() => {
     dispatch(fetchBannersDataAction())
     dispatch(fetchHotRecommendsAction())
+    dispatch(fetchNewAlbumsAction())
   }, [])
 
   return (
