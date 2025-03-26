@@ -13,6 +13,7 @@ import {
   RecommendWrapper
 } from './style'
 import HotRecommend from '@/pages/discover/recommend/components/hot-recommend'
+import NewAlbum from './components/new-album'
 
 interface RecommendProps {
   children?: ReactNode
@@ -31,6 +32,7 @@ const Recommend: FC<RecommendProps> = (props) => {
       <RecommendSection className="wrap-v2">
         <RecommendLeft>
           <HotRecommend />
+          <NewAlbum />
         </RecommendLeft>
         <RecommendRight>Right</RecommendRight>
       </RecommendSection>
