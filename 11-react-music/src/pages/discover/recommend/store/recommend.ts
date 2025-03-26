@@ -5,7 +5,7 @@ import {
   getNewAlbums
 } from '../services/recommend'
 import { SongItem } from '@/components/song-item'
-import { Result } from 'antd'
+import { AlbumItem } from '@/components/album-item'
 
 interface IBanner {
   imageUrl: string
@@ -15,7 +15,7 @@ interface IBanner {
 interface IRecommendState {
   banners: IBanner[]
   hotRecommends: SongItem[]
-  newAlbums: any[]
+  newAlbums: AlbumItem[]
 }
 
 export const fetchBannersDataAction = createAsyncThunk(

@@ -34,24 +34,20 @@ export const NewAlbumWrapper = styled.div`
       }
     }
 
-    .banner {
-      overflow: hidden;
-    }
-  }
-
-  .album {
-    width: 640px;
-    height: 150px;
-
-    .ant-carousel .slick-slide {
+    .albums {
+      width: 640px;
       height: 150px;
-      overflow: hidden;
-    }
 
-    .page {
-      display: flex !important;
-      justify-content: space-between;
-      align-items: center;
+      .ant-carousel .slick-slide {
+        height: 150px;
+        overflow: hidden;
+      }
+
+      .album-items {
+        display: flex !important;
+        justify-content: space-between;
+        align-items: center;
+      }
     }
   }
 `

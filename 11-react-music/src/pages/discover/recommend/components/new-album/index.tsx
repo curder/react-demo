@@ -5,6 +5,7 @@ import SectionHeader from '../section-header'
 import { Carousel } from 'antd'
 import { CarouselRef } from 'antd/es/carousel'
 import { useAppSelector } from '@/store'
+import AlbumItem from '@/components/album-item'
 
 interface NewAlbumProps {
   children?: ReactNode
@@ -32,10 +33,16 @@ const NewAlbum: FC<NewAlbumProps> = (props) => {
           onClick={handlePrevClick}
         ></button>
 
-        <div className="banner">
+        <div className="albums">
           <Carousel dots={false} speed={1000} ref={bannerRef}>
-            {[1, 2].map((item) => {
-              return <h2 key="item">{item}</h2>
+            {[0, 1].map((item) => {
+              return (
+                <div key={item} className="album-items">
+                  {albums.slice(item * 5, (item + 1) * 5).map((album) => {
+                    return <AlbumItem key={album.id} album={album} />
+                  })}
+                </div>
+              )
             })}
           </Carousel>
         </div>
