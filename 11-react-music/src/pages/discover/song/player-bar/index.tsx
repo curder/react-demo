@@ -7,7 +7,7 @@ import {
   PlayerBarWrapper
 } from './style'
 import { Link } from 'react-router-dom'
-import { Slider } from 'antd'
+import { Slider, message } from 'antd'
 import { appShallowEqual, useAppDispatch, useAppSelector } from '@/store'
 import { formatImageSize, formatTime } from '@/utils/format'
 import { getSongPlayUrl } from '@/utils/song'
@@ -77,6 +77,11 @@ const PlayerBar: FC<PlayerBarProps> = (props) => {
     if (lyricIndex === index || index === -1) return
 
     dispatch(changeLyricIndexAction(index))
+    message.open({
+      key: 'lyric',
+      duration: 0,
+      content: lyrics[index].content
+    })
   }
 
   // 播放按钮点击事件

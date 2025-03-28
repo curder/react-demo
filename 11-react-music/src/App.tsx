@@ -1,5 +1,6 @@
 import { useRoutes } from 'react-router-dom'
 import routers from '@/router'
+import '@ant-design/v5-patch-for-react-19'
 import { Suspense, useEffect } from 'react'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
