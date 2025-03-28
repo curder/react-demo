@@ -9,7 +9,7 @@ import {
 import { Link } from 'react-router-dom'
 import { Slider } from 'antd'
 import { appShallowEqual, useAppSelector } from '@/store'
-import { formatImageSize } from '@/utils/format'
+import { formatImageSize, formatTime } from '@/utils/format'
 import { getSongPlayUrl } from '@/utils/song'
 
 interface PlayerBarProps {
@@ -19,6 +19,7 @@ interface PlayerBarProps {
 const PlayerBar: FC<PlayerBarProps> = (props) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false)
   const [duration, setDuration] = useState<number>(0)
+  const [currentTime, setCurrentTime] = useState<number>(0)
   const [progress, setProgress] = useState<number>(0)
   const audioRef = useRef<HTMLAudioElement>(null)
 
@@ -36,11 +37,11 @@ const PlayerBar: FC<PlayerBarProps> = (props) => {
       ?.play()
       .then(() => {
         setIsPlaying(true)
-        console.log('歌曲播放成功')
+        // console.log('歌曲播放成功')
       })
       .catch((err) => {
         setIsPlaying(false)
-        console.log('歌曲播放失败', err)
+        // console.log('歌曲播放失败', err)
       })
     // 设置音乐总时长
     setDuration(currentSong?.dt || 0)
@@ -52,7 +53,8 @@ const PlayerBar: FC<PlayerBarProps> = (props) => {
     if (!audio) return
     const currentTime = audio.currentTime
     const percent = ((currentTime * 1000) / duration) * 100
- 
+
+    setCurrentTime(currentTime * 1000)
     setProgress(percent)
   }
 
@@ -96,9 +98,9 @@ const PlayerBar: FC<PlayerBarProps> = (props) => {
                 tooltip={{ formatter: null }}
               />
               <div className="time">
-                <span className="current">00:45</span>
+                <span className="current">{formatTime(currentTime)}</span>
                 <span className="divider">/</span>
-                <span className="duration">04:22</span>
+                <span className="duration">{formatTime(duration)}</span>
               </div>
             </div>
           </div>

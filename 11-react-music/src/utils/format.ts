@@ -15,3 +15,13 @@ export function formatImageSize(
 ) {
   return url + `?param=${width}x${height}`
 }
+
+// 格式化时间
+export function formatTime(time: number) {
+  // 毫秒转秒
+  time = Math.floor(time / 1000)
+  const m = Math.floor(time / 60) // 分
+  const s = time - m * 60 // 秒
+
+  return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`
+}
