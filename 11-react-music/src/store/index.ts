@@ -20,8 +20,8 @@ const store = configureStore({
 })
 
 // 导出 RootState 和 AppDispatch 类型
-type RootState = ReturnType<typeof store.getState>
-type AppDispatch = typeof store.dispatch
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
 
 // 使用 TypedUseSelectorHook 包装 useSelector
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
