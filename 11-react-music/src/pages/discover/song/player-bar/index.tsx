@@ -8,12 +8,19 @@ import {
 } from './style'
 import { Link } from 'react-router-dom'
 import { Slider } from 'antd'
+import { appShallowEqual, useAppSelector } from '@/store'
+import { formatImageSize } from '@/utils/format'
 
 interface PlayerBarProps {
   children?: ReactNode
 }
 
 const PlayerBar: FC<PlayerBarProps> = (props) => {
+  const { currentSong } = useAppSelector(
+    (state) => ({ currentSong: state.song.currentSong }),
+    appShallowEqual
+  )
+
   return (
     <PlayerBarWrapper className="sprite_playbar">
       <div className="player-bar-content wrap-v3">
@@ -26,14 +33,14 @@ const PlayerBar: FC<PlayerBarProps> = (props) => {
           <Link to="/song">
             <img
               className="image"
-              src="https://p2.music.126.net/OVkXDNmbk2uj6wE1KTZIwQ==/109951165203334337.jpg?param=34y34"
+              src={formatImageSize(currentSong?.al?.picUrl, 34)}
               alt=""
             />
           </Link>
           <div className="info">
             <div className="song">
-              <span className="name">舍得</span>
-              <span className="artist">王唯旖</span>
+              <span className="name">{currentSong?.name}</span>
+              <span className="artist">{currentSong?.ar[0].name}</span>
             </div>
             <div className="progress">
               <Slider />

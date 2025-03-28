@@ -6,14 +6,16 @@ import {
   shallowEqual
 } from 'react-redux'
 // 导入您的 reducers
-import counter from './modules/counter'
+import counter from '@/store/modules/counter'
 import recommend from '@/pages/discover/recommend/store/recommend'
+import song from '@/pages/discover/song/store/song'
 
 // 创建符合类型的 store
 const store = configureStore({
   reducer: {
     counter,
-    recommend
+    recommend,
+    song
   }
 })
 
