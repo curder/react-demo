@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { PlayMode } from '@/pages/discover/song/store/song'
 export const PlayerBarWrapper = styled.div`
   position: fixed;
   z-index: 99;
@@ -21,7 +22,11 @@ export const PlayerBarWrapper = styled.div`
   }
 `
 
-export const PlayerBarControl = styled.div<{ $isPlaying: boolean }>`
+interface IPlayerBarControl {
+  $isPlaying: boolean
+}
+
+export const PlayerBarControl = styled.div<IPlayerBarControl>`
   display: flex;
   align-items: center;
 
@@ -159,7 +164,11 @@ export const PlayerBarInfo = styled.div`
   }
 `
 
-export const PlayerBarOperator = styled.div`
+interface IPlayerBarOperator {
+  $playMode: PlayMode
+}
+
+export const PlayerBarOperator = styled.div<IPlayerBarOperator>`
   display: flex;
   align-items: center;
   position: relative;
@@ -216,9 +225,27 @@ export const PlayerBarOperator = styled.div`
     }
 
     .loop {
-      background-position: -67px -248px;
+      background-position: ${(props) => {
+        switch (props.$playMode) {
+          case 1:
+            return '-67px -248px'
+          case 2:
+            return '-66px -344px'
+          default:
+            return '-3px -344px'
+        }
+      }};
       &:hover {
-        background-position: -94px -248px;
+        background-position: ${(props) => {
+          switch (props.$playMode) {
+            case 1:
+              return '-94px -248px'
+            case 2:
+              return '-93px -344px'
+            default:
+              return '-33px -344px'
+          }
+        }};
       }
     }
 

@@ -3,6 +3,8 @@ import type { FC, ReactNode } from 'react'
 import { ToplistItemWrapper } from './style'
 import { formatImageSize } from '@/utils/format'
 import { Link } from 'react-router-dom'
+import { useAppDispatch } from '@/store'
+import { fetchCurrentSongAction } from '@/pages/discover/song/store/song'
 
 interface ToplistItemTrack {
   id: number
@@ -22,9 +24,16 @@ interface ToplistItemProps {
 }
 
 const ToplistItem: FC<ToplistItemProps> = (props) => {
+  const dispatch = useAppDispatch()
+
   const { item } = props
   const { tracks = [] } = item
   const path = `/discover/toplist?id=${item.id}`
+
+  // 播放歌曲
+  const playSongHandle = (id: number) => {
+    dispatch(fetchCurrentSongAction(id))
+  }
 
   return (
     <ToplistItemWrapper>
@@ -53,7 +62,11 @@ const ToplistItem: FC<ToplistItemProps> = (props) => {
                   </a>
                 </div>
                 <div className="operate">
-                  <button className="sprite_02 btn play" title="播放"></button>
+                  <button
+                    className="sprite_02 btn play"
+                    title="播放"
+                    onClick={() => playSongHandle(track.id)}
+                  ></button>
                   <button
                     className="sprite_icon2 btn add-playlist"
                     title="添加到播放列表"

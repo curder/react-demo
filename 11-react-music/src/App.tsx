@@ -5,15 +5,13 @@ import { Suspense, useEffect } from 'react'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import PlayerBar from '@/pages/discover/song/player-bar'
-import { useAppDispatch } from './store'
-import { fetchCurrentSongAction } from './pages/discover/song/store/song'
 function App() {
-  // 获取某首歌
-  const dispatch = useAppDispatch()
+  // // 获取某首歌
+  // const dispatch = useAppDispatch()
 
-  useEffect(() => {
-    dispatch(fetchCurrentSongAction(453268268))
-  }, [])
+  // useEffect(() => {
+  //   dispatch(fetchCurrentSongAction(453268268))
+  // }, [])
 
   return (
     <>
