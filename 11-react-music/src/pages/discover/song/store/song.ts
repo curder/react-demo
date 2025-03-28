@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import { getSongDetail, getSongLyric } from '../services/song'
+import { ILyric, parseLyric } from '@/utils/song'
 
 export const fetchCurrentSongAction = createAsyncThunk(
   'fetch/currentSongData',
@@ -13,17 +14,18 @@ export const fetchCurrentSongAction = createAsyncThunk(
 
     // 获取当前歌曲歌词
     getSongLyric(id).then((res) => {
-      console.log(res.lrc.lyric)
-      // const lyric = parseLyric(res.lrc.lyric)
-      // dispatch(changeLyricAction(lyric))
+      const lyric = parseLyric(res.lrc.lyric)
+      dispatch(changeLyricAction(lyric))
     })
   }
 )
 interface ISongState {
   currentSong: any
+  lyric: ILyric[]
 }
 const initialState: ISongState = {
-  currentSong: {}
+  currentSong: {},
+  lyric: []
 }
 
 const songSlice = createSlice({
@@ -32,10 +34,13 @@ const songSlice = createSlice({
   reducers: {
     changeCurrentSongAction(state, { payload }) {
       state.currentSong = payload
+    },
+    changeLyricAction(state, { payload }) {
+      state.lyric = payload
     }
   }
 })
 
-export const { changeCurrentSongAction } = songSlice.actions
+export const { changeCurrentSongAction, changeLyricAction } = songSlice.actions
 
 export default songSlice.reducer
