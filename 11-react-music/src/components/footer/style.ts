@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const FooterWrapper = styled.div`
-  //
+  border-top: 1px solid #d3d3d3;
 `
 export const FooterEnterWrapper = styled.ul`
   display: flex;
