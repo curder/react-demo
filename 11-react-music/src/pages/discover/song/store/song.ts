@@ -15,17 +15,19 @@ export const fetchCurrentSongAction = createAsyncThunk(
     // 获取当前歌曲歌词
     getSongLyric(id).then((res) => {
       const lyric = parseLyric(res.lrc.lyric)
-      dispatch(changeLyricAction(lyric))
+      dispatch(changeLyricsAction(lyric))
     })
   }
 )
 interface ISongState {
   currentSong: any
-  lyric: ILyric[]
+  lyrics: ILyric[]
+  lyricIndex: number
 }
 const initialState: ISongState = {
   currentSong: {},
-  lyric: []
+  lyrics: [],
+  lyricIndex: -1
 }
 
 const songSlice = createSlice({
@@ -35,12 +37,19 @@ const songSlice = createSlice({
     changeCurrentSongAction(state, { payload }) {
       state.currentSong = payload
     },
-    changeLyricAction(state, { payload }) {
-      state.lyric = payload
+    changeLyricsAction(state, { payload }) {
+      state.lyrics = payload
+    },
+    changeLyricIndexAction(state, { payload }) {
+      state.lyricIndex = payload
     }
   }
 })
 
-export const { changeCurrentSongAction, changeLyricAction } = songSlice.actions
+export const {
+  changeCurrentSongAction,
+  changeLyricsAction,
+  changeLyricIndexAction
+} = songSlice.actions
 
 export default songSlice.reducer

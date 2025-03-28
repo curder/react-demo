@@ -8,9 +8,10 @@ import {
 } from './style'
 import { Link } from 'react-router-dom'
 import { Slider } from 'antd'
-import { appShallowEqual, useAppSelector } from '@/store'
+import { appShallowEqual, useAppDispatch, useAppSelector } from '@/store'
 import { formatImageSize, formatTime } from '@/utils/format'
 import { getSongPlayUrl } from '@/utils/song'
+import { changeLyricIndexAction } from '../store/song'
 
 interface PlayerBarProps {
   children?: ReactNode
@@ -24,12 +25,16 @@ const PlayerBar: FC<PlayerBarProps> = (props) => {
   const [isSliderChange, setIsSliderChange] = useState<boolean>(false)
   const audioRef = useRef<HTMLAudioElement>(null)
 
-  const { currentSong } = useAppSelector(
+  const { currentSong, lyrics, lyricIndex } = useAppSelector(
     (state) => ({
-      currentSong: state.song.currentSong
+      currentSong: state.song.currentSong,
+      lyrics: state.song.lyrics,
+      lyricIndex: state.song.lyricIndex
     }),
     appShallowEqual
   )
+
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     // 播放歌曲
@@ -59,6 +64,19 @@ const PlayerBar: FC<PlayerBarProps> = (props) => {
       setCurrentTime(currentTime * 1000)
       setProgress(percent)
     }
+    // 匹配歌词
+    let index = lyrics.length - 1
+    for (let i = 0; i < lyrics.length; i++) {
+      if (currentTime * 1000 < lyrics[i].time) {
+        // 匹配到歌词
+        index = i - 1
+        break
+      }
+    }
+
+    if (lyricIndex === index || index === -1) return
+
+    dispatch(changeLyricIndexAction(index))
   }
 
   // 播放按钮点击事件
