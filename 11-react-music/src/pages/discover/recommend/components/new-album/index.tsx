@@ -4,7 +4,7 @@ import { NewAlbumWrapper } from './style'
 import SectionHeader from '../section-header'
 import { Carousel } from 'antd'
 import { CarouselRef } from 'antd/es/carousel'
-import { useAppSelector } from '@/store'
+import { appShallowEqual, useAppSelector } from '@/store'
 import AlbumItem from '@/components/album-item'
 
 interface NewAlbumProps {
@@ -12,7 +12,10 @@ interface NewAlbumProps {
 }
 
 const NewAlbum: FC<NewAlbumProps> = (props) => {
-  const albums = useAppSelector((state) => state.recommend.newAlbums)
+  const albums = useAppSelector(
+    (state) => state.recommend.newAlbums,
+    appShallowEqual
+  )
 
   const bannerRef = useRef<CarouselRef>(null)
 

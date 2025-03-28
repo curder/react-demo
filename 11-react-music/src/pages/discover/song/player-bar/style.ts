@@ -69,10 +69,23 @@ export const PlayerBarInfo = styled.div`
   width: 620px;
   align-items: center;
 
-  .image {
-    width: 34px;
-    height: 34px;
-    border-radius: 5px;
+  .head {
+    position: relative;
+    margin: 6px 5px 0 0;
+    .image {
+      width: 34px;
+      height: 34px;
+      border-radius: 5px;
+    }
+    .musk {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      display: block;
+      width: 34px;
+      height: 35px;
+      background-position: 0 -80px;
+    }
   }
 
   .info {

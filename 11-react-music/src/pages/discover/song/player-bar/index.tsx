@@ -34,16 +34,16 @@ const PlayerBar: FC<PlayerBarProps> = (props) => {
   useEffect(() => {
     // 播放歌曲
     audioRef.current!.src = getSongPlayUrl(currentSong?.id)
-    audioRef.current
-      ?.play()
-      .then(() => {
-        setIsPlaying(true)
-        // console.log('歌曲播放成功')
-      })
-      .catch((err) => {
-        setIsPlaying(false)
-        // console.log('歌曲播放失败', err)
-      })
+    // audioRef.current
+    //   ?.play()
+    //   .then(() => {
+    //     setIsPlaying(true)
+    //     // console.log('歌曲播放成功')
+    //   })
+    //   .catch((err) => {
+    //     setIsPlaying(false)
+    //     // console.log('歌曲播放失败', err)
+    //   })
     // 设置音乐总时长
     setDuration(currentSong?.dt || 0)
   }, [currentSong])
@@ -81,7 +81,6 @@ const PlayerBar: FC<PlayerBarProps> = (props) => {
 
   // 进度条点击事件
   const sliderChangedHandle = (value: number) => {
-    console.log('slider', value)
     const audio = audioRef.current
     if (!audio) return
     // 获取点击位置时间
@@ -107,17 +106,27 @@ const PlayerBar: FC<PlayerBarProps> = (props) => {
           <button className="btn sprite_playbar next"></button>
         </PlayerBarControl>
         <PlayerBarInfo>
-          <Link to="/song">
-            <img
-              className="image"
-              src={formatImageSize(currentSong?.al?.picUrl, 34)}
-              alt=""
-            />
-          </Link>
+          {currentSong?.al ? (
+            <Link to="/song">
+              <img
+                className="image"
+                src={formatImageSize(currentSong?.al?.picUrl, 34)}
+                alt=""
+              />
+            </Link>
+          ) : (
+            <div className="head">
+              <img
+                className="image"
+                src={require('@/assets/images/default_album.jpg')}
+              />
+              <a href="#" className="musk sprite_playbar"></a>
+            </div>
+          )}
           <div className="info">
             <div className="song">
               <span className="name">{currentSong?.name}</span>
-              <span className="artist">{currentSong?.ar[0].name}</span>
+              <span className="artist">{currentSong?.ar?.[0]?.name}</span>
             </div>
             <div className="progress">
               <Slider

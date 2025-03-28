@@ -3,7 +3,7 @@ import type { FC, ReactNode } from 'react'
 import { ToplistWrapper } from './style'
 import SectionHeader from '../section-header'
 import ToplistItem from './item'
-import { useAppSelector } from '@/store'
+import { appShallowEqual, useAppSelector } from '@/store'
 
 interface ToplistProps {
   children?: ReactNode
@@ -11,7 +11,8 @@ interface ToplistProps {
 
 const Toplist: FC<ToplistProps> = (props) => {
   const { upToplist, newToplist, originToplist } = useAppSelector(
-    (state) => state.recommend
+    (state) => state.recommend,
+    appShallowEqual
   )
 
   return (
