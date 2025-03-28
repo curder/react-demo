@@ -21,7 +21,7 @@ export const PlayerBarWrapper = styled.div`
   }
 `
 
-export const PlayerBarControl = styled.div`
+export const PlayerBarControl = styled.div<{ $isPlaying: boolean }>`
   display: flex;
   align-items: center;
 
@@ -46,9 +46,13 @@ export const PlayerBarControl = styled.div`
     width: 36px;
     height: 36px;
     margin: 0 8px;
-    background-position: 0 -165px; // '-204px'
+    /* background-position: 0 -165px; // '-204px' */
+    background-position: 0
+      ${(props) => (props.$isPlaying ? '-165px' : '-204px')};
     &:hover {
-      background-position: -40px -165px;
+      /* background-position: -40px -165px; */
+      background-position: -40px
+        ${(props) => (props.$isPlaying ? '-165px' : '-204px')};
     }
   }
 

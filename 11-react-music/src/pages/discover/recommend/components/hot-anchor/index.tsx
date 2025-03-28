@@ -9,7 +9,6 @@ interface HotAnchorProps {
 }
 
 const HotAnchor: FC<HotAnchorProps> = (props) => {
-  console.log(hotAnchors)
   return (
     <HotAnchorWrapper>
       <RightSectionHeader title="热门主播" />
