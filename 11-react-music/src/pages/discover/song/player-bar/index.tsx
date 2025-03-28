@@ -21,6 +21,7 @@ const PlayerBar: FC<PlayerBarProps> = (props) => {
   const [duration, setDuration] = useState<number>(0)
   const [currentTime, setCurrentTime] = useState<number>(0)
   const [progress, setProgress] = useState<number>(0)
+  const [isSliderChange, setIsSliderChange] = useState<boolean>(false)
   const audioRef = useRef<HTMLAudioElement>(null)
 
   const { currentSong } = useAppSelector(
@@ -54,8 +55,10 @@ const PlayerBar: FC<PlayerBarProps> = (props) => {
     const currentTime = audio.currentTime
     const percent = ((currentTime * 1000) / duration) * 100
 
-    setCurrentTime(currentTime * 1000)
-    setProgress(percent)
+    if (!isSliderChange) {
+      setCurrentTime(currentTime * 1000)
+      setProgress(percent)
+    }
   }
 
   // 播放按钮点击事件
@@ -65,6 +68,31 @@ const PlayerBar: FC<PlayerBarProps> = (props) => {
       : audioRef.current?.play().catch(() => setIsPlaying(false))
 
     setIsPlaying(!isPlaying)
+  }
+
+  const sliderChangeHandle = (value: number) => {
+    setProgress(value)
+    setIsSliderChange(true) // 拖拽状态
+
+    // 获取位置时间
+    const currentTime = (value / 100) * duration
+    setCurrentTime(currentTime)
+  }
+
+  // 进度条点击事件
+  const sliderChangedHandle = (value: number) => {
+    console.log('slider', value)
+    const audio = audioRef.current
+    if (!audio) return
+    // 获取点击位置时间
+    const currentTime = (value / 100) * duration
+    // 设置播放时间
+    audio.currentTime = currentTime / 1000
+
+    // 设置播放状态
+    setCurrentTime(currentTime)
+    setProgress(value)
+    setIsSliderChange(false)
   }
 
   return (
@@ -96,6 +124,8 @@ const PlayerBar: FC<PlayerBarProps> = (props) => {
                 value={progress}
                 step={0.5}
                 tooltip={{ formatter: null }}
+                onChange={sliderChangeHandle}
+                onChangeComplete={sliderChangedHandle}
               />
               <div className="time">
                 <span className="current">{formatTime(currentTime)}</span>
